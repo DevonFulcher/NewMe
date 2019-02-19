@@ -3,6 +3,7 @@ package com.example.newme;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -10,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        System.out.println(Login.test());
-        System.out.println("something");
+        Login log = new Login();
+        System.out.println(log.name);
     }
 }
