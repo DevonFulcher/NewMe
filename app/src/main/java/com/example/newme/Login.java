@@ -24,6 +24,8 @@ public class Login extends MainActivity {
         System.out.println("something");
     }
 
+    public static boolean signInCheck = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,8 @@ public class Login extends MainActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Login.this.onClick(v);
+                //have user enter user data and then query bigChain to check if this person is real...
+                //enter username and pin...
                 // Code here executes on main thread after user presses button
                 //after button is clicked then run some code to see if a person has an account.
             }
@@ -45,10 +49,9 @@ public class Login extends MainActivity {
         // Check for existing Google Sign In account, if the user is already signed      in
         // the GoogleSignInAccount will be non-null.
         super.onStart();
+        signIn();
+        if(Login.signInCheck){
 
-        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
-            //check to see if user has signed in before
-            System.out.println("\n");
         }
     }
 
@@ -56,18 +59,29 @@ public class Login extends MainActivity {
         switch(v.getId()){
             case R.id.signIn:
                 signIn();
+            case R.id.signout:
+                signOut();
                 break;
         }
     }
 
     private void signIn(){
         System.out.println("get user sign in information");
+        //get user information from user class?
         //Query bigchainDB.
+    }
 
-
-
+    private boolean signOut(){
+        //once signed out, user will have to manually sign in again
+        //return true for signout
+        Login.signInCheck = true;
+        return true;
 
     }
+
+
+
+
 
 
 
