@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">New Me</string>
     <!-- dummy data below -->
     <string-array name="person">
