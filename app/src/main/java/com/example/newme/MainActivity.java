@@ -18,13 +18,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     public static TextView resultTV;
     Button scanButton;
-
-public class MainActivity extends AppCompatActivity {
-
     RecyclerView voucherRecycler;
     String s1[], s2[];
     MyOwnAdapter ad;
