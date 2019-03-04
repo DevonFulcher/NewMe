@@ -28,7 +28,7 @@ public class MakeAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_account);
+        setContentView(R.layout.content_make_account);
         Intent intent = getIntent();
         intent.getAction();
 
@@ -37,7 +37,7 @@ public class MakeAccount extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        final Button button = findViewById(R.id.create_button);
+        final Button button = findViewById(R.id.create_account);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
