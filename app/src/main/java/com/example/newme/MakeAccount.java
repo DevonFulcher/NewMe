@@ -73,12 +73,13 @@ public class MakeAccount extends AppCompatActivity {
         TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
         EditText e = (EditText)findViewById(R.id.email);  //email
         EditText p = (EditText) findViewById(R.id.user_pin); //pin
-
+        EditText cPin = (EditText) findViewById(R.id.confirm_pin);
 
         String UFirst = first.getEditText().getText().toString();
         String ULast = last.getEditText().getText().toString();
         String UEmail = e.getText().toString();
         String UPin = p.getText().toString();
+        String confirmPin = cPin.getText().toString();
 
         Log.d("FName",UFirst);
         int duration =Toast.LENGTH_LONG;
@@ -92,14 +93,15 @@ public class MakeAccount extends AppCompatActivity {
         Toast accToast = Toast.makeText(context,acceptedText,duration);
         Toast existToast = Toast.makeText(context,userExists,duration);
 
-        if(R.id.confirm_pin != R.id.pin){
+        if(!(UPin.equals(confirmPin))){
             toast.show();
+
         }else{
             accToast.show();
         }
 
         String to_hash = UFirst+ ULast + UEmail + UPin;
-
+        String cp_hash = null;
         try {
             MessageDigest md = MessageDigest.getInstance("Sha-256");
             byte[] user_hash = md.digest(to_hash.getBytes());
@@ -116,15 +118,17 @@ public class MakeAccount extends AppCompatActivity {
             else{
                 added_to_DB.show();
             }
+            cp_hash = hashed_val;
 
-
-            Log.d("hash",hashed_val);
-            return hashed_val;
+//            Log.d("hash",hashed_val);
+//            return hashed_val;
 
         }catch (NoSuchAlgorithmException al){
             System.out.println("rip" + al);
             return null;
         }
+        Log.d("hash",cp_hash);
+        return cp_hash;
 
 
 
