@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final Button button = findViewById(R.id.make_acount);
+        final Button button = findViewById(R.id.create_account);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         button.setOnClickListener(new View.OnClickListener() {
