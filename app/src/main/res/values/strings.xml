@@ -1,5 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">New Me</string>
-
-
+    <string name="title_activity_make_account">MakeAccount</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
