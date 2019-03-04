@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static TextView resultTV;
     Button scanButton;
 
-public class MainActivity extends AppCompatActivity {
-
     RecyclerView voucherRecycler;
     String s1[], s2[];
     MyOwnAdapter ad;
