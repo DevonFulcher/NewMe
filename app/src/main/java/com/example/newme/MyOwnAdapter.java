@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MyOwnAdapter extends RecyclerView.Adapter<MyOwnAdapter.MyOwnHolder> {
@@ -42,7 +41,6 @@ public class MyOwnAdapter extends RecyclerView.Adapter<MyOwnAdapter.MyOwnHolder>
         TextView t1, t2;
         public MyOwnHolder(@NonNull View itemView) {
             super(itemView);
-            //is this line right?
             t1 = (TextView) itemView.findViewById(R.id.text1);
             t2 = (TextView) itemView.findViewById(R.id.text2);
         }
