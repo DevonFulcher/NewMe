@@ -1,5 +1,6 @@
 package com.example.newme;
 
+public class ProfilePage {
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
