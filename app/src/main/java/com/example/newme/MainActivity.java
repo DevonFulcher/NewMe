@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), QRCode.class));
             }
         });
+
+
         setContentView(R.layout.profile_page);
         setContentView(R.layout.activity_main);
         voucherRecycler = (RecyclerView) findViewById(R.id.voucherRecycler);
@@ -52,17 +54,19 @@ public class MainActivity extends AppCompatActivity {
 
         voucherRecycler.setAdapter(ad);
         voucherRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+
+
         Button loginButton = findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // TODO Auto-generated method stub
+                // TODO Auto-generated method stub
 
-            Intent intent = new Intent(MainActivity.this,
-                    LoginActivity.class);
-            MainActivity.this.startActivity(intent); // startActivity allow you to move
-        }
-    });
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                MainActivity.this.startActivity(intent); // startActivity allow you to move
+            }
+        });
     }
 }
