@@ -1,13 +1,13 @@
 package com.example.newme;
 
-public class ProfilePage {
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 
 public class ProfilePage  extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.activity_main);
     }
 }

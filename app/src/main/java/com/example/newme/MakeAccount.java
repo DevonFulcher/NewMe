@@ -29,7 +29,7 @@ public class MakeAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_account);
-        Intent intent = getIntent();
+        Intent intent = getIntent(); //this might screw everything up...added "final"
         intent.getAction();
 
 
@@ -52,7 +52,11 @@ public class MakeAccount extends AppCompatActivity {
                 }else{
                     Log.d("check","add here \n");
                     MakeAccount.this.bigchainDB.add(hashData());
+                    //MakeAccount.this.finish();
+                    Intent profile_intent = new Intent(MakeAccount.this,ProfilePage.class);
+                    MakeAccount.this.startActivity(profile_intent);
                     MakeAccount.this.finish();
+
                 }
 
             }
