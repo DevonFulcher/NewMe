@@ -45,10 +45,10 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <view
+    <!--,<view
         android:id="@+id/voucherRecycler"
         class="android.support.v7.widget.RecyclerView"
-        id="@+id/view"></view>
+        id="@+id/view"></view>*/-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
