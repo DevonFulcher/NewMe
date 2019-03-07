@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static TextView resultTV;
     Button scanButton;
 
-public class MainActivity extends AppCompatActivity {
 
     RecyclerView voucherRecycler;
     String s1[], s2[];
@@ -64,6 +63,6 @@ public class MainActivity extends AppCompatActivity {
                     LoginActivity.class);
             MainActivity.this.startActivity(intent); // startActivity allow you to move
         }
-    });
+        });
     }
 }

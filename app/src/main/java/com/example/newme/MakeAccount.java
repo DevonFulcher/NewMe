@@ -53,6 +53,8 @@ public class MakeAccount extends AppCompatActivity {
                     Log.d("check","add here \n");
                     MakeAccount.this.bigchainDB.add(hashData());
                     Log.d("test", "what's going on \n");
+                    Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
+                    MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
                 }
 
