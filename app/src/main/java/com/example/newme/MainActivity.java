@@ -25,10 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Button scanButton;
     Button loginButton;
     Button profile;
-
-    RecyclerView voucherRecycler;
-    String s1[], s2[];
-    MyOwnAdapter ad;
+    Button settings_button;
+    Button voucher_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,32 +38,39 @@ public class MainActivity extends AppCompatActivity {
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
         profile = (Button)findViewById(R.id.profileButton);
+        settings_button = (Button) findViewById(R.id.settingsButton);
+        voucher_button = (Button) findViewById(R.id.vouchers);
 
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent qrIntent = new Intent(MainActivity.this, QRCode.class);
                 MainActivity.this.startActivity(qrIntent); // startActivity allow you to move
-
-
-
             }
         });
 
-       loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
                MainActivity.this.startActivity(loginIntent);
            }
-       });
+        });
 
+        //Why are there two identical methods here?
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
                 MainActivity.this.startActivity(loginIntent);
+            }
+        });
+
+        voucher_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent voucherIntent = new Intent(MainActivity.this, VoucherActivity.class);
+                MainActivity.this.startActivity(voucherIntent);
             }
         });
 
@@ -76,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(profileIntent);
             }
         });
-
-
 
     }
 }

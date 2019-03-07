@@ -17,6 +17,11 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- not very sure about following lines-->
+        <activity android:name=".VoucherActivity"></activity>
+        <activity android:name=".ProfilePage"></activity>
+
         <activity
             android:name=".MakeAccount"
             android:label="@string/title_activity_make_account"
