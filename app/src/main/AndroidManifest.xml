@@ -12,16 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QRCode"></activity>
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/sign_in" />
+
+        <activity android:name=".QRCode" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <!-- not very sure about following lines-->
-        <activity android:name=".VoucherActivity"></activity>
-        <activity android:name=".ProfilePage"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- not very sure about following lines -->
+        <activity android:name=".VoucherActivity" />
+        <activity android:name=".ProfilePage" />
         <activity
             android:name=".MakeAccount"
             android:label="@string/title_activity_make_account"
