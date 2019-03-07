@@ -1,6 +1,5 @@
 package com.example.newme;
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +17,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     public static TextView resultTV;
     Button scanButton;
-
     RecyclerView voucherRecycler;
     String s1[], s2[];
     MyOwnAdapter ad;
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), QRCode.class));
             }
         });
+
+
         setContentView(R.layout.profile_page);
         setContentView(R.layout.activity_main);
         voucherRecycler = (RecyclerView) findViewById(R.id.voucherRecycler);
@@ -51,17 +52,19 @@ public class MainActivity extends AppCompatActivity {
 
         voucherRecycler.setAdapter(ad);
         voucherRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+
+
         Button loginButton = findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // TODO Auto-generated method stub
+                // TODO Auto-generated method stub
 
-            Intent intent = new Intent(MainActivity.this,
-                    LoginActivity.class);
-            MainActivity.this.startActivity(intent); // startActivity allow you to move
-        }
-    });
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                MainActivity.this.startActivity(intent); // startActivity allow you to move
+            }
+        });
     }
 }
