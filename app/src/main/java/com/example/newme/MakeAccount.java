@@ -23,8 +23,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 
 public class MakeAccount extends AppCompatActivity {
-
-    private static Set bigchainDB = new HashSet<String>();
+    private static User user;
+    private static Set bigchainDB = new HashSet<User>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +51,9 @@ public class MakeAccount extends AppCompatActivity {
 
                 }else{
                     Log.d("check","add here \n");
-                    MakeAccount.this.bigchainDB.add(hashData());
-                    Log.d("test", "what's going on \n");
+                    MakeAccount.this.bigchainDB.add(user);
+                    String n = user.getFirstName();
+                    Log.d("test", n);
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
@@ -83,6 +84,9 @@ public class MakeAccount extends AppCompatActivity {
         String UEmail = e.getText().toString();
         String UPin = p.getText().toString();
         String confirmPin = cPin.getText().toString();
+
+
+
 
         Log.d("FName",UFirst);
         int duration =Toast.LENGTH_LONG;
@@ -122,9 +126,8 @@ public class MakeAccount extends AppCompatActivity {
                 added_to_DB.show();
             }
             cp_hash = hashed_val;
+            user = new User(UFirst,ULast,UEmail,UPin,cp_hash);
 
-//            Log.d("hash",hashed_val);
-//            return hashed_val;
 
         }catch (NoSuchAlgorithmException al){
             System.out.println("rip" + al);

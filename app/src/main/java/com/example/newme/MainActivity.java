@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
         profile = (Button)findViewById(R.id.profileButton);
+
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,3 +81,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
