@@ -4,17 +4,28 @@ package com.example.newme;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
 
 public class MainActivity extends AppCompatActivity {
 
     public static TextView resultTV;
     Button scanButton;
+    Button loginButton;
+    Button profile;
+
     RecyclerView voucherRecycler;
     String s1[], s2[];
     MyOwnAdapter ad;
@@ -22,35 +33,52 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setContentView(R.layout.activity_main);//if user has not made an account, don't display and call LogIn/MakeAccount
-        Button loginButton = findViewById(R.id.signIn);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        resultTV = (TextView)findViewById(R.id.tvResult);
+        scanButton = (Button)findViewById(R.id.btnQRStart);
+        loginButton = (Button)findViewById(R.id.login_button);
+        profile = (Button)findViewById(R.id.profileButton);
+
+        scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
 
-                switch(v.getId()){
-                    case R.id.btnVoucher:
-                        voucherRecycler = (RecyclerView) findViewById(R.id.voucherRecycler);
-                        s1 = getResources().getStringArray(R.array.person);
-                        s2 = getResources().getStringArray(R.array.description);
-                        ad =  new MyOwnAdapter(MainActivity.this, s1, s2);
+                Intent qrIntent = new Intent(MainActivity.this, QRCode.class);
+                MainActivity.this.startActivity(qrIntent); // startActivity allow you to move
 
-                        voucherRecycler.setAdapter(ad);
-                        voucherRecycler.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                        break;
-                    case R.id.btnQR:
-                        startActivity(new Intent(getApplicationContext(), QRCode.class));
-                        break;
 
-                }
-                Intent intent = new Intent(MainActivity.this,
-                        LoginActivity.class);
-                MainActivity.this.startActivity(intent); // startActivity allow you to move
+
             }
         });
 
-        super.onCreate(savedInstanceState);
+       loginButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
+               MainActivity.this.startActivity(loginIntent);
+           }
+       });
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
+                MainActivity.this.startActivity(loginIntent);
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(MainActivity.this,ProfilePage.class);
+                MainActivity.this.startActivity(profileIntent);
+            }
+        });
+
+
 
     }
 }
+

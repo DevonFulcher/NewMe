@@ -18,6 +18,10 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".ProfilePage"
+            android:label="ProfilePage"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".MakeAccount"
             android:label="@string/title_activity_make_account"
             android:theme="@style/AppTheme.NoActionBar" />

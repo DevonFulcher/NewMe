@@ -17,21 +17,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final Button button = findViewById(R.id.make_acct_page);
+        final Button button = findViewById(R.id.create_account);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                /*
-                 * Intent is just like glue which helps to navigate one activity
-                 * to another.
-                 */Intent intent = new Intent(LoginActivity.this,
-                        MakeAccount.class);
-                   LoginActivity.this.startActivity(intent); // startActivity allow you to move
+                Intent intent = new Intent(LoginActivity.this, MakeAccount.class);
+                LoginActivity.this.startActivity(intent); // startActivity allow you to move
             }
         });
 
@@ -44,29 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         //Query bigchainDB.
     }
 
-    private void makeAcct(){
 
-        final Button button = findViewById(R.id.make_acct_page);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //have user enter user data and then query bigChain to check if this person is real...
-                //enter username and pin...
-                //Code here executes on main thread after user presses button
-                //after button is clicked then run some code to see if a person has an account.
-                startActivity(new Intent(LoginActivity.this,MakeAccount.class));
-
-
-            }
-        });
-        System.out.println("Make an account!!!!");
-        //launch the make account activity
-//        Intent intent = new Intent(this,MakeAccoun t.class);
-//        startActivity(intent);
-        //will launch the make account activity.
-    }
 
 //    private boolean signOut(){
 //        //once signed out, user will have to manually sign in again
