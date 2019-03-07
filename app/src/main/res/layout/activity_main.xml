@@ -42,10 +42,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    android:layout_height="wrap_content"
+    <!--android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <!--,<view
+    ,<view
         android:id="@+id/voucherRecycler"
         class="android.support.v7.widget.RecyclerView"
         id="@+id/view"></view>*/-->
