@@ -4,22 +4,22 @@
     <string name="this_is_a_test">This is a test</string>
     <!-- dummy data below -->
     <string-array name="person">
-        <item>item1</item>
-        <item>item2</item>
-        <item>item3</item>
-        <item>item4</item>
-        <item>item5</item>
+        <item>Walmart</item>
+        <item>HEB</item>
+        <item>Convenience Store</item>
+        <item>Natural Grocers</item>
+        <item>Whole Foods</item>
         <item>item6</item>
         <item>item7</item>
         <item>item8</item>
     </string-array>
 
     <string-array name="description">
-        <item>description1</item>
-        <item>description2</item>
-        <item>description3</item>
-        <item>description4</item>
-        <item>description5</item>
+        <item>$20.00</item>
+        <item>$12.23</item>
+        <item>$8.43</item>
+        <item>$19.14</item>
+        <item>$11.41</item>
         <item>description6</item>
         <item>description7</item>
         <item>description8</item>
