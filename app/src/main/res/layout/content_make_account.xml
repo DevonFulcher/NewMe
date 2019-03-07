@@ -57,15 +57,14 @@
         android:hint="Enter First Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082">
+        app:layout_constraintVertical_bias="0.061">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -78,7 +77,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:hint="enter last name"
+        android:hint="Enter Last Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -88,8 +87,7 @@
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <EditText
