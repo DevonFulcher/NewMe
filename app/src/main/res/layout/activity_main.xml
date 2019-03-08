@@ -41,27 +41,16 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        <!-- unsure of merge conflict below
-        app:layout_constraintStart_toStartOf="parent" />
-    <!--android:layout_height="wrap_content"
-    tools:context=".MainActivity">
-
-    ,<view
-        android:id="@+id/voucherRecycler"
-        class="android.support.v7.widget.RecyclerView"
-        id="@+id/view"></view>*/-->
-
-        -
-
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" /><![CDATA[
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!--<![CDATA[
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
+    ]]>-->
 
-    ]]>
-        -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
