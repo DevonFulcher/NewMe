@@ -1,4 +1,6 @@
 *.iml
+*.gradle #exclude all gradle files
+!build.gradle #reinclude this specific gradle file
 /local.properties
 /.idea/caches
 /.idea/libraries
