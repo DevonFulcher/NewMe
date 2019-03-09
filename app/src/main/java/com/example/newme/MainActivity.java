@@ -33,7 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if(User.userSet.isEmpty()){
+            Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
+            startActivity(checkUserIntent);
+        }else{
+            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+            startActivity(signInIntent);
+        }
         resultTV = (TextView)findViewById(R.id.tvResult);
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);

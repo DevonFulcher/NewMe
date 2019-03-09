@@ -50,10 +50,7 @@ public class MakeAccount extends AppCompatActivity {
                     acctToast.show();//this account already exists
 
                 }else{
-                    Log.d("check","add here \n");
-                    MakeAccount.this.bigchainDB.add(user);
-                    String n = user.getFirstName();
-                    Log.d("test", n);
+
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
@@ -127,7 +124,7 @@ public class MakeAccount extends AppCompatActivity {
             }
             cp_hash = hashed_val;
             user = new User(UFirst,ULast,UEmail,UPin,cp_hash);
-
+            User.userSet.add(user);
 
         }catch (NoSuchAlgorithmException al){
             System.out.println("rip" + al);
