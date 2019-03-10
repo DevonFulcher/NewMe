@@ -1,6 +1,7 @@
 package com.example.newme;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
@@ -27,6 +28,15 @@ public class MakeAccount extends AppCompatActivity {
     private static Set bigchainDB = new HashSet<User>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /**
+         * shared preferences used to save data, call in main to check if there is data of a user.
+         * Fucntionality to add a user?
+         *
+         */
+        SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor userDataEditor = savedData.edit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_account);
         Intent intent = getIntent();
