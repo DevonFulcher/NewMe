@@ -21,6 +21,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
     public static TextView resultTV;
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //access shared preferences here=====>>>>
+//        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.UserData),Context.MODE_PRIVATE);
+//        Set<String> userInfo = sharedPref.getStringSet(getString());
+
         if(User.userSet.isEmpty()){
             Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
             startActivity(checkUserIntent);

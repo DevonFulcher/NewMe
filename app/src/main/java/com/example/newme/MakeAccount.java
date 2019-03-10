@@ -19,6 +19,7 @@ import android.content.Intent;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -34,8 +35,10 @@ public class MakeAccount extends AppCompatActivity {
          * Fucntionality to add a user?
          *
          */
+
         SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor userDataEditor = savedData.edit();
+        final SharedPreferences.Editor userDataEditor = savedData.edit();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_account);
@@ -60,7 +63,15 @@ public class MakeAccount extends AppCompatActivity {
                     acctToast.show();//this account already exists
 
                 }else{
+                    Set tempSet = new HashSet<String>();
+                    tempSet.add(user.getFirstName());
+                    tempSet.add(user.getLastName());
+                    tempSet.add(user.getEmail());
+                    tempSet.add(user.getPin());
+                    tempSet.add(user.getHash());
 
+                    userDataEditor.putStringSet("UserData",tempSet);
+                    userDataEditor.commit();
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
@@ -78,7 +89,6 @@ public class MakeAccount extends AppCompatActivity {
 
 
     private String hashData(){
-
 
         TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
         TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
@@ -130,11 +140,14 @@ public class MakeAccount extends AppCompatActivity {
                 return null;
             }
             else{
-                added_to_DB.show();
+                added_to_DB.show(); //toast
             }
             cp_hash = hashed_val;
             user = new User(UFirst,ULast,UEmail,UPin,cp_hash);
+            //add user to set... now add user to sharedPreferences
             User.userSet.add(user);
+
+
 
         }catch (NoSuchAlgorithmException al){
             System.out.println("rip" + al);

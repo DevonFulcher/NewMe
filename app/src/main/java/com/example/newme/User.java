@@ -23,7 +23,7 @@ public class User {
     public String getPin(){ return this.pin; }
     public String getLastName(){ return this.lastName; }
     public String getHash(){ return this.hash; }
-
+    public String getEmail(){return this.email;}
 
 
 
