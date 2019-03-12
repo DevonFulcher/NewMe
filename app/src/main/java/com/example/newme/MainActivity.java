@@ -4,6 +4,7 @@ package com.example.newme;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,8 +40,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //access shared preferences here=====>>>>
-//        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.UserData),Context.MODE_PRIVATE);
-//        Set<String> userInfo = sharedPref.getStringSet(getString());
+        //Preference Managaer found here: https://stackoverflow.com/questions/5946135/difference-between-getdefaultsharedpreferences-and-getsharedpreferences
+        //google docs: https://developer.android.com/training/data-storage/shared-preferences
+
+        //if a user has registed an account then ask for login pin...
+//        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+//        if(sharedPref.contains("UserData")){
+//            Log.d("check","**********\n**************");
+//            Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
+//            startActivity(checkUserIntent);
+//        }else{
+//            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+//            startActivity(signInIntent);
+//        }
 
         if(User.userSet.isEmpty()){
             Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);

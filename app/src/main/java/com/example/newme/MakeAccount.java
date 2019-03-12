@@ -38,6 +38,7 @@ public class MakeAccount extends AppCompatActivity {
 
         SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
         final SharedPreferences.Editor userDataEditor = savedData.edit();
+        //a sharedPreferences file that will allow us to save user data
 
 
         super.onCreate(savedInstanceState);
@@ -69,9 +70,10 @@ public class MakeAccount extends AppCompatActivity {
                     tempSet.add(user.getEmail());
                     tempSet.add(user.getPin());
                     tempSet.add(user.getHash());
-
+                    //put a stringSet into the sharedPreference
                     userDataEditor.putStringSet("UserData",tempSet);
                     userDataEditor.commit();
+                    //commmit to file ^^^^
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
