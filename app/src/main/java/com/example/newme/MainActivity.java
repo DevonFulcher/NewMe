@@ -44,23 +44,23 @@ public class MainActivity extends AppCompatActivity {
         //google docs: https://developer.android.com/training/data-storage/shared-preferences
 
         //if a user has registed an account then ask for login pin...
-//        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-//        if(sharedPref.contains("UserData")){
-//            Log.d("check","**********\n**************");
-//            Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
-//            startActivity(checkUserIntent);
-//        }else{
-//            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
-//            startActivity(signInIntent);
-//        }
-
-        if(User.userSet.isEmpty()){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPref.contains("Pin") && sharedPref.contains("Email")){
+            Log.d("check","**********\n**************");
             Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
             startActivity(checkUserIntent);
         }else{
             Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
             startActivity(signInIntent);
         }
+
+//        if(User.userSet.isEmpty()){
+//            Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
+//            startActivity(checkUserIntent);
+//        }else{
+//            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+//            startActivity(signInIntent);
+//        }
         resultTV = (TextView)findViewById(R.id.tvResult);
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
@@ -84,14 +84,6 @@ public class MainActivity extends AppCompatActivity {
            }
         });
 
-        //Why are there two identical methods here?
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
-                MainActivity.this.startActivity(loginIntent);
-            }
-        });
 
         voucher_button.setOnClickListener(new View.OnClickListener() {
             @Override

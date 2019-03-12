@@ -71,8 +71,11 @@ public class MakeAccount extends AppCompatActivity {
                     tempSet.add(user.getPin());
                     tempSet.add(user.getHash());
                     //put a stringSet into the sharedPreference
-                    userDataEditor.putStringSet("UserData",tempSet);
-                    userDataEditor.commit();
+                    userDataEditor.putString("FirstName",user.getFirstName());
+                    userDataEditor.putString("LastName",user.getLastName());
+                    userDataEditor.putString("Email",user.getEmail());
+                    userDataEditor.putString("Pin",user.getPin());
+                    userDataEditor.apply();
                     //commmit to file ^^^^
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page

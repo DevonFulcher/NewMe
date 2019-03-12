@@ -21,6 +21,7 @@
             android:theme="@style/AppTheme.NoActionBar" /> <!-- not very sure about following lines -->
         <activity android:name=".VoucherActivity" />
         <activity android:name=".ProfilePage" />
+        <activity android:name=".SignIn"/>
         <activity
             android:name=".MakeAccount"
             android:label="@string/title_activity_make_account"
