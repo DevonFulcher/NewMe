@@ -16,22 +16,17 @@ public class SignIn extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
         EditText pin = (EditText)findViewById(R.id.sign_in);
-        Intent intent = new Intent(SignIn.this,ProfilePage.class);
+        Intent launch_profile_intent = new Intent(SignIn.this,ProfilePage.class);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        //TODO
-        if(pin.toString().equals(sharedPref("Pin"))){
+
+        String sharedPin = sharedPref.getString("Pin","");
+        if(User.userSet.contains(sharedPin)){
+            SignIn.this.startActivity(launch_profile_intent);
+
+        }else{
 
         }
 
-        for (Iterator<User> it = User.userSet.iterator(); it.hasNext(); ) {
-            User u = it.next();
-            if(u.getPin().equals(pin.toString())){
-                Log.d("pin",u.getPin());
-                SignIn.this.startActivity(intent);
-            }else{
-                break;
-            }
-        }
 
 
     }

@@ -39,28 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //access shared preferences here=====>>>>
-        //Preference Managaer found here: https://stackoverflow.com/questions/5946135/difference-between-getdefaultsharedpreferences-and-getsharedpreferences
-        //google docs: https://developer.android.com/training/data-storage/shared-preferences
 
-        //if a user has registed an account then ask for login pin...
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        if(sharedPref.contains("Pin") && sharedPref.contains("Email")){
-            Log.d("check","**********\n**************");
-            Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
-            startActivity(checkUserIntent);
-        }else{
-            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
-            startActivity(signInIntent);
-        }
-
-//        if(User.userSet.isEmpty()){
-//            Intent checkUserIntent = new Intent(MainActivity.this,MakeAccount.class);
-//            startActivity(checkUserIntent);
-//        }else{
-//            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
-//            startActivity(signInIntent);
-//        }
         resultTV = (TextView)findViewById(R.id.tvResult);
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
@@ -101,6 +80,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(checkSharedPreferences()){
+            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+            startActivity(signInIntent);
+            MainActivity.this.finish();
+        }else{
+            Log.d("check","Need Toast \n");
+            Intent needToMakeAccountIntent = new Intent(MainActivity.this,MakeAccount.class);
+            startActivity(needToMakeAccountIntent);
+            MainActivity.this.finish();
+        }
+
+
+    }
+
+    public boolean checkSharedPreferences(){
+        //access shared preferences here=====>>>>
+        //Preference Managaer found here:
+        //  https://stackoverflow.com/questions/5946135/difference-between-getdefaultsharedpreferences-and-getsharedpreferences
+        //google docs:
+        //  https://developer.android.com/training/data-storage/shared-preferences
+        //if a user has registered an account then ask for login pin...
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPref.contains("Pin") && sharedPref.contains("Email")){
+            Log.d("check",sharedPref.getString("Pin",""));
+            return true;
+        }
+        return false;
     }
 }
 

@@ -32,7 +32,7 @@ public class MakeAccount extends AppCompatActivity {
 
         /**
          * shared preferences used to save data, call in main to check if there is data of a user.
-         * Fucntionality to add a user?
+         *
          *
          */
 
@@ -64,13 +64,7 @@ public class MakeAccount extends AppCompatActivity {
                     acctToast.show();//this account already exists
 
                 }else{
-                    Set tempSet = new HashSet<String>();
-                    tempSet.add(user.getFirstName());
-                    tempSet.add(user.getLastName());
-                    tempSet.add(user.getEmail());
-                    tempSet.add(user.getPin());
-                    tempSet.add(user.getHash());
-                    //put a stringSet into the sharedPreference
+                    //Add Strings to the defaultSharedPreferences file
                     userDataEditor.putString("FirstName",user.getFirstName());
                     userDataEditor.putString("LastName",user.getLastName());
                     userDataEditor.putString("Email",user.getEmail());
@@ -160,7 +154,6 @@ public class MakeAccount extends AppCompatActivity {
         }
         Log.d("hash",cp_hash);
         return cp_hash;
-
 
 
 
