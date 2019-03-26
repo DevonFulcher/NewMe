@@ -82,9 +82,6 @@ public class MakeAccount extends AppCompatActivity {
 
     }
 
-    private boolean makeAcct(){
-        return true;
-    }
 
 
     private String hashData(){
