@@ -36,39 +36,26 @@ public class TransactionActivity extends AppCompatActivity {
 //    @BindView(R.id.btn_login) Button _txButton;
 //    @BindView(R.id.tx_response) TextView _txRespText;
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_transaction);
-//        ButterKnife.bind(this);
-//
-//        _txButton.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                send();
-//            }
-//        });
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-//    }
+
+
+
+    }
 
     public void send() {
         Log.d(TAG, "Sending Transaction");
 
-//        if (!validate()) {
-//            onSendFailed();
-//            return;
-//        }
+        if (!validate()) {
+            onSendFailed();
+            return;
+        }
 
-       // _txButton.setEnabled(false);
 
-//        final ProgressDialog progressDialog = new ProgressDialog(TransactionActivity.this,
-//                R.style.AppTheme_Dark_Dialog);
-//        progressDialog.setIndeterminate(true);
-//        progressDialog.setMessage("sending tx to BigchainDB...");
-//        progressDialog.show();
+        //get string from Daniel's QR code
 
-        //String txText = _txText.getText().toString();
         Transaction sentTx = null;
         try{
             sentTx = bigchainDBApi.sendTransaction("QR Code From Daniel's Activity");
@@ -80,7 +67,7 @@ public class TransactionActivity extends AppCompatActivity {
             SUCCESS_CODE = -3;
         }
 
-        Log.d(TAG, sentTx.toString());
+//        Log.d(TAG, sentTx.toString()); logging sentText
         final Transaction tx = sentTx;
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -122,15 +109,15 @@ public class TransactionActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-//    public void onSendSuccess(Transaction successfulTx) {
-//        _txButton.setEnabled(true);
-//
-//        Toast.makeText(getBaseContext(), "Transaction successful", Toast.LENGTH_LONG).show();
-//        JsonObject jsonObject = new JsonParser().parse(successfulTx.toString()).getAsJsonObject();
-//        _txRespText.setText(toPrettyFormat(jsonObject.toString()));
-//        //set success code to intial state
-//        SUCCESS_CODE = 1;
-//    }
+    public void onSendSuccess(Transaction successfulTx) {
+        //_txButton.setEnabled(true);
+
+        Toast.makeText(getBaseContext(), "Transaction successful", Toast.LENGTH_LONG).show();
+        JsonObject jsonObject = new JsonParser().parse(successfulTx.toString()).getAsJsonObject();
+        //_txRespText.setText(toPrettyFormat(jsonObject.toString()));
+        //set success code to intial state
+        SUCCESS_CODE = 1;
+    }
 
     public void onSendFailed() {
         Log.d(TAG, "Transaction failed. Success code - " + SUCCESS_CODE);
@@ -147,29 +134,27 @@ public class TransactionActivity extends AppCompatActivity {
             SUCCESS_CODE = 1;
         }
 
-//        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-//        if(SUCCESS_CODE == -3){
-//            finishAffinity();
-//            System.exit(0);
-//        }
 
-        //_txButton.setEnabled(true);
     }
 
-//    public boolean validate() {
-//        boolean valid = true;
-//
-//        String tx = _txText.getText().toString();
-//
-//        if (tx.isEmpty()) {
+    public boolean validate() {
+        boolean valid = true;
+
+        String tx = "Code from scanning QR label";
+        if(tx.equals(null)){
+            Log.d("Error", "set an error here");
+            valid = false;
+        }
+//            if (tx.isEmpty()) {
 //            _txText.setError("type a message to send");
 //            valid = false;
 //        } else {
 //            _txText.setError(null);
 //        }
-//
-//        return valid;
-//    }
+
+        return valid;
+
+    }
 
     private GenericCallback handleServerResponse() {
         //define callback methods to verify response from BigchainDBServer

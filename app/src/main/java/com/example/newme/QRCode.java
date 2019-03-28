@@ -26,6 +26,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result result) {
+        //Need to return the result to pass it to TransactionActivity.
         MainActivity.resultTV.setText(result.getText());
         onBackPressed();
     }
