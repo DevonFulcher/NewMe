@@ -32,12 +32,12 @@ public class MakeAccount extends AppCompatActivity {
 
         /**
          * shared preferences used to save data, call in main to check if there is data of a user.
-         *
-         *
+         * https://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String,%20int)
+         * name of the shared preferences file will be
          */
-
-        SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
-        final SharedPreferences.Editor userDataEditor = savedData.edit();
+        SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA",0);
+        //SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences.Editor userDataEditor = saveData.edit();
         //a sharedPreferences file that will allow us to save user data
 
 
@@ -65,6 +65,7 @@ public class MakeAccount extends AppCompatActivity {
 
                 }else{
                     //Add Strings to the defaultSharedPreferences file
+                    //use key to get info
                     userDataEditor.putString("FirstName",user.getFirstName());
                     userDataEditor.putString("LastName",user.getLastName());
                     userDataEditor.putString("Email",user.getEmail());

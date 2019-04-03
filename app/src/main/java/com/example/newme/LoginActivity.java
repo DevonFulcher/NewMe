@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.sign_in);
 
         final Button button = findViewById(R.id.create_account);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -32,11 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void signIn(){
-        System.out.println("get user sign in information");
-        //get user information from user class?
-        //Query bigchainDB.
-    }
+
 
 
 

@@ -1,23 +1,12 @@
 package com.example.newme;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -58,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
+               //checkSharedPreferences();
+               Intent loginIntent = new Intent(MainActivity.this,SignIn.class);
                MainActivity.this.startActivity(loginIntent);
            }
         });
@@ -80,34 +70,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(checkSharedPreferences()){
-            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
-            startActivity(signInIntent);
-            MainActivity.this.finish();
-        }else{
-            Log.d("check","Need Toast \n");
-            Intent needToMakeAccountIntent = new Intent(MainActivity.this,MakeAccount.class);
-            startActivity(needToMakeAccountIntent);
-            MainActivity.this.finish();
-        }
+//        if(checkSharedPreferences()){
+//            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+//            MainActivity.this.startActivity(signInIntent);
+//            //MainActivity.this.finish();
+//        }else{
+//            Log.d("check","Need Toast \n");
+//            Intent needToMakeAccountIntent = new Intent(MainActivity.this,MakeAccount.class);
+//            MainActivity.this.startActivity(needToMakeAccountIntent);
+//            //MainActivity.this.finish();
+//        }
 
 
     }
 
-    public boolean checkSharedPreferences(){
-        //access shared preferences here=====>>>>
-        //Preference Managaer found here:
-        //  https://stackoverflow.com/questions/5946135/difference-between-getdefaultsharedpreferences-and-getsharedpreferences
-        //google docs:
-        //  https://developer.android.com/training/data-storage/shared-preferences
-        //if a user has registered an account then ask for login pin...
-
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        if(sharedPref.contains("Pin") && sharedPref.contains("Email")){
-            Log.d("check",sharedPref.getString("Pin",""));
-            return true;
-        }
-        return false;
-    }
 }
 
