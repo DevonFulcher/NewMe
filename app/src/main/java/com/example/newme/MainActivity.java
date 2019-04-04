@@ -27,6 +27,8 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     public static TextView resultTV;
+    public static TextView Name;
+    public static TextView Email;
     Button scanButton;
     Button loginButton;
     Button profile;
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        Name = (TextView)findViewById(R.id.Name);
+        Email= (TextView)findViewById(R.id.Email);
         resultTV = (TextView)findViewById(R.id.tvResult);
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
