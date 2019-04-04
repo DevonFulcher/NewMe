@@ -27,6 +27,25 @@ import okhttp3.Response;
 
 
 public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+
+
+    /**
+     * TODO: research sending transactions.
+     * After scanning QRCode the app crashes.
+     *
+     * Research found here:
+     *  BigchainDB Java Driver - https://github.com/bigchaindb/java-bigchaindb-driver
+     *
+     *  Transaction example - https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
+     *      Probably need to move away from boiler plate code and try to implement the transaction example more closely.
+     *
+     *  Boiler plate- https://github.com/bigchaindb/android-boilerplate
+     *
+     * One of the errors being thrown:
+     *  https://www.slf4j.org/codes.html#StaticLoggerBinder
+     *
+     *
+     */
     static String qResult = null;
     private static final String TAG = "TransactionActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -48,7 +67,6 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         qResult = result.getText();
         MainActivity.resultTV.setText(result.getText());
         try {
-            //Bigchain.sendTransaction(qResult);
             this.send();
         } catch (Exception e) {
             e.printStackTrace();
