@@ -17,12 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import com.bigchaindb.model.Account;
+
 
 public class MakeAccount extends AppCompatActivity {
     private static User user;
@@ -60,18 +63,25 @@ public class MakeAccount extends AppCompatActivity {
                 int duration =Toast.LENGTH_LONG;
                 Toast acctToast = Toast.makeText(context,acct_exists,duration);
 
-                if(hashData().equals(null)){
+                if(hashData("CHANGE").equals(null)){
                     acctToast.show();//this account already exists
 
                 }else{
                     //Add Strings to the defaultSharedPreferences file
                     //use key to get info
+                    //TODO: make user acoount https://github.com/bigchaindb/java-bigchaindb-driver/blob/master/src/main/java/com/bigchaindb/api/AccountApi.java
+                    //Make user accounts
                     userDataEditor.putString("FirstName",user.getFirstName());
                     userDataEditor.putString("LastName",user.getLastName());
                     userDataEditor.putString("Email",user.getEmail());
                     userDataEditor.putString("Pin",user.getPin());
                     userDataEditor.apply();
                     //commmit to file ^^^^
+
+//                    Account userAccount = new Account();
+//                    loadAccount()
+                    hashData(user.getEmail());
+
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
@@ -85,7 +95,9 @@ public class MakeAccount extends AppCompatActivity {
 
 
 
-    private String hashData(){
+
+
+    private String hashData(String data){
 
         TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
         TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
@@ -121,7 +133,8 @@ public class MakeAccount extends AppCompatActivity {
             accToast.show();
         }
 
-        String to_hash = UFirst+ ULast + UEmail + UPin;
+        String to_hash = data;
+
         String cp_hash = null;
         try {
             MessageDigest md = MessageDigest.getInstance("Sha-256");
@@ -132,13 +145,14 @@ public class MakeAccount extends AppCompatActivity {
             while (hashed_val.length() < 32) {
                 hashed_val = "O" + hashed_val;
             }
-            if(MakeAccount.this.bigchainDB.contains(hashed_val)){
-                existToast.show();
-                return null;
-            }
-            else{
-                added_to_DB.show(); //toast
-            }
+//            if(MakeAccount.this.bigchainDB.contains(hashed_val)){
+//                existToast.show();
+//                return null;
+//            }
+//            else{
+//                added_to_DB.show(); //toast
+//            }
+
             cp_hash = hashed_val;
             user = new User(UFirst,ULast,UEmail,UPin,cp_hash);
             //add user to set... now add user to sharedPreferences
