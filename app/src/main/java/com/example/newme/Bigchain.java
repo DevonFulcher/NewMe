@@ -33,13 +33,14 @@ public class Bigchain {
     private GenericCallback callback = null;
 
     public Bigchain(GenericCallback callback){
+
         this.callback = callback;
     }
 
     /**
      * configures connection url and credentials
      */
-    public void setConfig() {
+    public static void setConfig() {
         BigchainDbConfigBuilder
                 .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
                 .addToken("app_id", "")
@@ -50,7 +51,7 @@ public class Bigchain {
     public Transaction sendTransaction(String data) throws Exception {
 
         Log.d(TAG, "Setting configuration..");
-        this.setConfig();
+        setConfig();
         Transaction transaction = null;
 
         //create asset data

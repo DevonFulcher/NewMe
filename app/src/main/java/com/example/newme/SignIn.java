@@ -25,9 +25,10 @@ public class SignIn extends MainActivity {
             @Override
             public void onClick(View v) {
                 EditText pin = (EditText)findViewById(R.id.sign_in);
-                pin.getText().toString();
+                EditText email = findViewById(R.id.email_text);
                 Log.d("logPin",pin.getText().toString());
-                if(sharedPref.getString("Pin","NULL").equals(pin.getText().toString())){
+                //if email and pin are on record
+                if(sharedPref.getString("Pin","NULL").equals(pin.getText().toString()) && sharedPref.getString("Email", "NULL").equals(email.getText().toString())){
                     Intent intent = new Intent(SignIn.this, ProfilePage.class);
                     SignIn.this.startActivity(intent);
                 }else Log.d("progress", "did not work");

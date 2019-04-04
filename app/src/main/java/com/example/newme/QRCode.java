@@ -48,6 +48,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         qResult = result.getText();
         MainActivity.resultTV.setText(result.getText());
         try {
+            //Bigchain.sendTransaction(qResult);
             this.send();
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,6 +101,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
             //sentTx = thisBigChain.sendTransaction(QRCode.qResult);
             //newTransaction = thisBigChain.sendTransaction(QRCode.qResult);
             bigchainDBApi.sendTransaction(QRCode.qResult);
+            Log.d(TAG, sentTx.toString());
         }
         bigchainDBApi.sendTransaction(QRCode.qResult);
 
