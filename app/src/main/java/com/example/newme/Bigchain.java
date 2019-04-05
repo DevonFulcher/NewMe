@@ -8,6 +8,7 @@ import com.bigchaindb.constants.Operations;
 import com.bigchaindb.model.GenericCallback;
 import com.bigchaindb.model.Transaction;
 
+
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import net.i2p.crypto.eddsa.KeyPairGenerator;

@@ -3,9 +3,7 @@ package com.example.newme;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
+
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,18 +11,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
 import android.content.Intent;
-
-import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import com.bigchaindb.model.Account;
+
+import static com.bigchaindb.api.AccountApi.loadAccount;
 
 
 public class MakeAccount extends AppCompatActivity {
@@ -63,6 +61,7 @@ public class MakeAccount extends AppCompatActivity {
                 int duration =Toast.LENGTH_LONG;
                 Toast acctToast = Toast.makeText(context,acct_exists,duration);
 
+                //TODO: change to query bigchainDB to check if user's public key already exists
                 if(hashData("CHANGE").equals(null)){
                     acctToast.show();//this account already exists
 
@@ -78,9 +77,14 @@ public class MakeAccount extends AppCompatActivity {
                     userDataEditor.apply();
                     //commmit to file ^^^^
 
-//                    Account userAccount = new Account();
-//                    loadAccount()
-                    hashData(user.getEmail());
+                    Account userAccount = new Account();
+                    //auto generated try catch
+                    try {
+                        loadAccount(user.getEmail(), user.getSecret()+user.getPin());
+                    } catch (InvalidKeySpecException e) {
+                        e.printStackTrace();
+                    }
+                    //hashData(user.getEmail()+user.getPin());
 
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
@@ -104,12 +108,14 @@ public class MakeAccount extends AppCompatActivity {
         EditText e = (EditText)findViewById(R.id.email);  //email
         EditText p = (EditText) findViewById(R.id.user_pin); //pin
         EditText cPin = (EditText) findViewById(R.id.confirm_pin);
+        EditText secret = findViewById(R.id.secret_text);
 
         String UFirst = first.getEditText().getText().toString();
         String ULast = last.getEditText().getText().toString();
         String UEmail = e.getText().toString();
         String UPin = p.getText().toString();
         String confirmPin = cPin.getText().toString();
+        String userSecret = secret.getText().toString();
 
 
 
@@ -154,7 +160,7 @@ public class MakeAccount extends AppCompatActivity {
 //            }
 
             cp_hash = hashed_val;
-            user = new User(UFirst,ULast,UEmail,UPin,cp_hash);
+            user = new User(UFirst,ULast,UEmail,UPin,cp_hash,userSecret);
             //add user to set... now add user to sharedPreferences
             User.userSet.add(user);
 
