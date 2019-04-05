@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +27,7 @@ import static com.bigchaindb.api.AccountApi.loadAccount;
 
 
 public class MakeAccount extends AppCompatActivity {
-    private static User user;
+    public static User user;
     private static Set bigchainDB = new HashSet<User>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class MakeAccount extends AppCompatActivity {
                 }else{
                     //Add Strings to the defaultSharedPreferences file
                     //use key to get info
-                    //TODO: make user acoount https://github.com/bigchaindb/java-bigchaindb-driver/blob/master/src/main/java/com/bigchaindb/api/AccountApi.java
+                    //TODO: make user account https://github.com/bigchaindb/java-bigchaindb-driver/blob/master/src/main/java/com/bigchaindb/model/Account.java
                     //Make user accounts
                     userDataEditor.putString("FirstName",user.getFirstName());
                     userDataEditor.putString("LastName",user.getLastName());
@@ -77,14 +78,19 @@ public class MakeAccount extends AppCompatActivity {
                     userDataEditor.apply();
                     //commmit to file ^^^^
 
-                    Account userAccount = new Account();
-                    //auto generated try catch
+                    Account userAccount = new Account();//com.bigchaindb.model.account/unt();
                     try {
-                        loadAccount(user.getEmail(), user.getSecret()+user.getPin());
+                        userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getEmail()+user.getPin()));
                     } catch (InvalidKeySpecException e) {
                         e.printStackTrace();
                     }
-                    //hashData(user.getEmail()+user.getPin());
+
+                    try {
+                        userAccount.setPublicKey(userAccount.publicKeyFromHex(user.getEmail()));
+                    } catch (InvalidKeySpecException e) {
+                        e.printStackTrace();
+                    }
+
 
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page

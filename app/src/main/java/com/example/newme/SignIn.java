@@ -28,10 +28,11 @@ public class SignIn extends MainActivity {
                 EditText email = findViewById(R.id.email_text);
                 Log.d("logPin",pin.getText().toString());
                 //if email and pin are on record
+                //if(MakeAccount.user.getEmail().equals(email.toString()) && MakeAccount.user.getPin().equals(pin.toString())){
                 if(sharedPref.getString("Pin","NULL").equals(pin.getText().toString()) && sharedPref.getString("Email", "NULL").equals(email.getText().toString())){
                     Intent intent = new Intent(SignIn.this, ProfilePage.class);
                     SignIn.this.startActivity(intent);
-                }else Log.d("progress", "did not work");
+                }else Log.d("progress", sharedPref.getString("Name","try"));
             }
         });
 

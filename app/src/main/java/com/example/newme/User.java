@@ -19,9 +19,7 @@ public class User {
             this.hash = hash;
             this.secret = secret;
         }
-    public String getFirstName(){
-        return this.firstName;
-    }
+    public String getFirstName(){ return this.firstName; }
     public String getPin(){ return this.pin; }
     public String getLastName(){ return this.lastName; }
     public String getHash(){ return this.hash; }
