@@ -1,5 +1,6 @@
 package com.example.newme;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
@@ -7,6 +8,7 @@ import com.bigchaindb.builders.BigchainDbTransactionBuilder;
 import com.bigchaindb.constants.Operations;
 import com.bigchaindb.model.GenericCallback;
 import com.bigchaindb.model.Transaction;
+import com.google.zxing.oned.rss.RSS14Reader;
 
 
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
@@ -23,8 +25,10 @@ import java.util.TreeMap;
  * to create TXs on BigchainDB network
  * @author innoprenuer
  *
+ * AsyncTask - https://developer.android.com/reference/android/os/AsyncTask.html
+ *
  */
-public class Bigchain {
+public class Bigchain extends AsyncTask<String,String,String> {
 
     private static KeyPairGenerator edDsaKpg = new KeyPairGenerator();
     private static final String TAG = "BigchainDB";
@@ -43,7 +47,7 @@ public class Bigchain {
      */
     public static void setConfig() {
         BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
+                .baseUrl(bigchainDBNodeURL)
                 .addToken("app_id", "")
                 .addToken("app_key", "").setup();
 
@@ -82,5 +86,9 @@ public class Bigchain {
 
 
 
-
+    //auto-completed code
+    @Override
+    protected String doInBackground(String... strings) {
+        return null;
+    }
 }

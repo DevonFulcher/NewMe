@@ -26,6 +26,15 @@ public class User {
     public String getEmail(){return this.email;}
     public String getSecret(){return this.secret;}
 
+    /*
+    for (TypeKey name: example.keySet()){
 
+            String key =name.toString();
+            String value = example.get(name).toString();
+            System.out.println(key + " " + value);
+
+
+}
+     */
 
 }

@@ -80,7 +80,7 @@ public class MakeAccount extends AppCompatActivity {
 
                     Account userAccount = new Account();//com.bigchaindb.model.account/unt();
                     try {
-                        userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getEmail()+user.getPin()));
+                        userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getEmail()+user.getSecret()));
                     } catch (InvalidKeySpecException e) {
                         e.printStackTrace();
                     }
@@ -90,6 +90,7 @@ public class MakeAccount extends AppCompatActivity {
                     } catch (InvalidKeySpecException e) {
                         e.printStackTrace();
                     }
+
 
 
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
