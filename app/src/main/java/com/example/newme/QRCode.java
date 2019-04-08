@@ -73,22 +73,34 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         //bigchainDBApi.execute();
         //bigchainDBApi.setConfig();//set the configuration of the DB.
         qResult = result.getText();
-        try {
+
+
+        new Thread(new Runnable() {
+            public void run() {
+                    // a potentially time consuming task
+                try {
 //            bigchainDBApi.execute();
-            bigchainDBApi.setConfig();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                    bigchainDBApi.setConfig();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    //bigchainDBApi.doInBackground(oneItem);
+                    //TODO: Have a class for available funds...
+                    bigchainDBApi.sendTransaction(qResult);
+                    //this.send();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+            }).start();
+
+
         MainActivity.resultTV.setText(result.getText());
         //String[] oneItem = {qResult}; //doInBackground takes a list of strings as input?
-        try {
-            //bigchainDBApi.doInBackground(oneItem);
-            //TODO: Have a class for available funds...
-            bigchainDBApi.sendTransaction(qResult);
-            //this.send();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         onBackPressed();
     }
 
