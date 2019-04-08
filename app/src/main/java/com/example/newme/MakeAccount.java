@@ -80,9 +80,11 @@ public class MakeAccount extends AppCompatActivity {
 
                     Account userAccount = new Account();//com.bigchaindb.model.account/unt();
                     try {
-                        userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getEmail()+user.getSecret()));
+                        userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getSecret()));
+                        Log.d("connection test","Success");
                     } catch (InvalidKeySpecException e) {
                         e.printStackTrace();
+                        Log.d("Connection Failure", "Fail");
                     }
 
                     try {
@@ -115,7 +117,7 @@ public class MakeAccount extends AppCompatActivity {
         EditText e = (EditText)findViewById(R.id.email);  //email
         EditText p = (EditText) findViewById(R.id.user_pin); //pin
         EditText cPin = (EditText) findViewById(R.id.confirm_pin);
-        EditText secret = findViewById(R.id.secret_text);
+        EditText secret = (EditText) findViewById(R.id.secret_text);
 
         String UFirst = first.getEditText().getText().toString();
         String ULast = last.getEditText().getText().toString();

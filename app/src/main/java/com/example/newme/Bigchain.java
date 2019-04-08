@@ -26,9 +26,10 @@ import java.util.TreeMap;
  * @author innoprenuer
  *
  * AsyncTask - https://developer.android.com/reference/android/os/AsyncTask.html
+ * https://medium.com/@ankit.sinhal/understanding-of-asynctask-in-android-8fe61a96a238
  *
  */
-public class Bigchain extends AsyncTask<String,String,String> {
+public class Bigchain{
 
     private static KeyPairGenerator edDsaKpg = new KeyPairGenerator();
     private static final String TAG = "BigchainDB";
@@ -86,9 +87,4 @@ public class Bigchain extends AsyncTask<String,String,String> {
 
 
 
-    //auto-completed code
-    @Override
-    protected String doInBackground(String... strings) {
-        return null;
-    }
 }

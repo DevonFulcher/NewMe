@@ -8,13 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.bigchaindb.builders.BigchainDbConfigBuilder;
-import com.bigchaindb.constants.BigchainDbApi;
+//import com.bigchaindb.builders.BigchainDbConfigBuilder;
+//import com.bigchaindb.constants.BigchainDbApi;
 import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.app.ProgressDialog;
+//import android.os.Bundle;
+//import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.content.Intent;
 import com.bigchaindb.model.GenericCallback;
@@ -24,7 +24,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import okhttp3.Response;
-import com.bigchaindb.api.TransactionsApi;
+//import com.bigchaindb.api.TransactionsApi;
+//
+//import javax.websocket.RemoteEndpoint;
 
 
 public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler{
@@ -68,13 +70,21 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     public void handleResult(Result result) {
         //Need to return the result to pass it to TransactionActivity.
-        bigchainDBApi.setConfig();//set the configuration of the DB.
+        //bigchainDBApi.execute();
+        //bigchainDBApi.setConfig();//set the configuration of the DB.
         qResult = result.getText();
-        MainActivity.resultTV.setText(result.getText());
         try {
-            bigchainDBApi.sendTransaction(qResult);
+//            bigchainDBApi.execute();
+            bigchainDBApi.setConfig();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        MainActivity.resultTV.setText(result.getText());
+        //String[] oneItem = {qResult}; //doInBackground takes a list of strings as input?
+        try {
+            //bigchainDBApi.doInBackground(oneItem);
             //TODO: Have a class for available funds...
-            //userTransaction.sendTransaction(userTransaction.);
+            bigchainDBApi.sendTransaction(qResult);
             //this.send();
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,68 +119,6 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         }
     }
 
-    public void send() throws Exception {
-        //Bigchain thisBigChain = new com.example.newme.Bigchain();
-//        Transaction newTransaction = null;
-        Log.d(TAG, "Sending Transaction");
-
-        if (!validate()) {
-            onSendFailed();
-            return;
-        }
-
-        //get string from Daniel's QR code
-        Transaction sentTx = null;
-        if(QRCode.qResult.equals(null)){
-            Log.d("oof", "NUll QRCODE");
-        }else{
-            //sentTx = thisBigChain.sendTransaction(QRCode.qResult);
-            //newTransaction = thisBigChain.sendTransaction(QRCode.qResult);
-            bigchainDBApi.sendTransaction(QRCode.qResult);
-
-            Log.d(TAG, sentTx.toString());
-        }
-        bigchainDBApi.sendTransaction(QRCode.qResult);
-
-//        Transaction sentText = thisBigChain.sendTransaction(QRCode.qResult);
-//        bigchainDBApi.sendTransaction(sentText);
-
-//        Transaction sentTx = null;
-//        try{
-//            sentTx = bigchainDBApi.sendTransaction(QRCode.this.qResult);
-//        } catch (ConnectException ex){
-//            //set error code
-//            SUCCESS_CODE = -2;
-//        } catch (Exception e){
-//            //set error code
-//            SUCCESS_CODE = -3;
-//        }
-
-//        Log.d(TAG, sentTx.toString()); logging sentText
-//        final Transaction tx = sentTx;
-//        new android.os.Handler().postDelayed(
-//                new Runnable() {
-//                    public void run() {
-//                        Log.d(TAG, "Success code - " + SUCCESS_CODE);
-//                        while(SUCCESS_CODE == 1){
-//                            try {
-//                                Thread.sleep(500);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//                            Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
-//                        }
-//                        if(SUCCESS_CODE == 0){
-//                            //onSendSuccess(tx);
-//                        }
-//                        else {
-//                            onSendFailed();
-//                        }
-//
-//                        //progressDialog.dismiss();
-//                    }
-//                }, 3000);
-    }
 
 
     @Override
