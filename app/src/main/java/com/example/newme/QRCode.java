@@ -74,28 +74,31 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         //bigchainDBApi.setConfig();//set the configuration of the DB.
         qResult = result.getText();
 
-
+//      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
         new Thread(new Runnable() {
             public void run() {
-                    // a potentially time consuming task
+
                 try {
-//            bigchainDBApi.execute();
                     bigchainDBApi.setConfig();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 try {
-                    //bigchainDBApi.doInBackground(oneItem);
                     //TODO: Have a class for available funds...
                     bigchainDBApi.sendTransaction(qResult);
-                    //this.send();
+                    Log.d("WIN","Transaction sent!");
+                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
+                    startActivity(toProfile);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
+
+
             }
-            }).start();
+        }).start();
 
 
         MainActivity.resultTV.setText(result.getText());
