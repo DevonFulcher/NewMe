@@ -24,6 +24,7 @@
         <item>description7</item>
         <item>description8</item>
     </string-array>
+
     <string name="title_activity_make_account">MakeAccount</string>
     <string name="title_activity_login">LoginActivity</string>
 </resources>

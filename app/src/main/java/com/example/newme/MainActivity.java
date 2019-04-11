@@ -2,22 +2,19 @@ package com.example.newme;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,13 +24,17 @@ public class MainActivity extends AppCompatActivity {
     Button profile;
     Button settings_button;
     Button voucher_button;
+    public static TextView Name;
+    public static TextView Email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Name = (TextView)findViewById(R.id.Name);
+        Email = (TextView)findViewById(R.id.Email);
         resultTV = (TextView)findViewById(R.id.tvResult);
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
@@ -52,19 +53,12 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
+               //checkSharedPreferences();
+               Intent loginIntent = new Intent(MainActivity.this,SignIn.class);
                MainActivity.this.startActivity(loginIntent);
            }
         });
 
-        //Why are there two identical methods here?
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
-                MainActivity.this.startActivity(loginIntent);
-            }
-        });
 
         voucher_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +76,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        if(checkSharedPreferences()){
+//            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
+//            MainActivity.this.startActivity(signInIntent);
+//            //MainActivity.this.finish();
+//        }else{
+//            Log.d("check","Need Toast \n");
+//            Intent needToMakeAccountIntent = new Intent(MainActivity.this,MakeAccount.class);
+//            MainActivity.this.startActivity(needToMakeAccountIntent);
+//            //MainActivity.this.finish();
+//        }
+
+
     }
+
 }
 

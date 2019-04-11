@@ -28,7 +28,7 @@
         android:contentDescription="TODO" />
 
     <Button
-        android:id="@+id/btnProfile"
+        android:id="@+id/ProfileButton"
         android:layout_width="144dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
@@ -39,14 +39,14 @@
         android:layout_marginBottom="8dp"
         android:text="Profile"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnSettings"
+        app:layout_constraintEnd_toEndOf="@+id/SettingsButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnQR"
+        android:id="@+id/QRButton"
         android:layout_width="144dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
@@ -58,13 +58,13 @@
         android:text="QR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnSettings"
+        android:id="@+id/SettingsButton"
         android:layout_width="144dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
@@ -79,10 +79,10 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/Name"
         android:layout_width="224dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
@@ -102,8 +102,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.273" />
 
-    <EditText
-        android:id="@+id/editText2"
+    <TextView
+        android:id="@+id/Email"
         android:layout_width="291dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
@@ -123,16 +123,18 @@
         app:layout_constraintVertical_bias="0.371" />
 
     <Button
-        android:id="@+id/btnVoucher"
+        android:id="@+id/VoucherButton"
         android:layout_width="120dp"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/roundedbutton"
         android:text="Voucher Balance"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.229"
