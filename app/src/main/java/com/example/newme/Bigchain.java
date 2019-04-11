@@ -35,7 +35,7 @@ public class Bigchain{
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "capstone.bigchain.db";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
 
     public Bigchain(GenericCallback callback){
@@ -48,9 +48,10 @@ public class Bigchain{
      */
     public static void setConfig() {
         BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL).setup();
-                //.addToken("app_id", "")
-                //.addToken("app_key", "").setup();
+                .baseUrl(bigchainDBNodeURL)
+                .addToken("app_id","")
+                .addToken("app_key","").setup();
+
 
     }
 
