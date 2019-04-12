@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,7 +33,7 @@ import static com.bigchaindb.api.AccountApi.loadAccount;
 
 
 public class MakeAccount extends AppCompatActivity {
-    public static User user;
+
     Bigchain bigchainDBApi = new Bigchain(this.handleServerResponse());
     private static final String TAG = "MakeAccountActivity";
     int SUCCESS_CODE = 1;
@@ -62,20 +63,42 @@ public class MakeAccount extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+
+
         final Button button = findViewById(R.id.create_button);
         button.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+
+                TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
+                TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
+                EditText e = (EditText)findViewById(R.id.email);  //email
+                EditText p = (EditText) findViewById(R.id.user_pin); //pin
+                EditText cPin = (EditText) findViewById(R.id.confirm_pin);
+                EditText secret = (EditText) findViewById(R.id.secret_text);
+
+                String UFirst = first.getEditText().getText().toString();
+                String ULast = last.getEditText().getText().toString();
+                String UEmail = e.getText().toString();
+                String UPin = p.getText().toString();
+                String confirmPin = cPin.getText().toString();
+                String userSecret = secret.getText().toString();
+
+                final User user = new User(UFirst,ULast,UEmail,UPin,confirmPin,userSecret);
+
+
                 Context context = getApplicationContext();
                 CharSequence acct_exists = "This account already exists";
                 int duration =Toast.LENGTH_LONG;
                 Toast acctToast = Toast.makeText(context,acct_exists,duration);
 
                 //TODO: change to query bigchainDB to check if user's public key already exists
-                if(hashData("CHANGE").equals(null)){
-                    acctToast.show();//this account already exists
+                //if(hashData("CHANGE").equals(null)){
+                //    acctToast.show();//this account already exists
 
-                }else{
+                //}else{
                     //Add Strings to the defaultSharedPreferences file
                     //use key to get info
                     //TODO: make user account https://github.com/bigchaindb/java-bigchaindb-driver/blob/master/src/main/java/com/bigchaindb/model/Account.java
@@ -100,37 +123,43 @@ public class MakeAccount extends AppCompatActivity {
                     Account userAccount = new Account();
                     try {
                         bigchainDBApi.setConfig();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (Exception a) {
+                        a.printStackTrace();
                     }
 
+
                     try {
-                        userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getSecret()));
+                        Log.d("test user class",user.getEmail());
+                        PrivateKey privateKey = userAccount.privateKeyFromHex(user.getSecret());
+                        userAccount.setPrivateKey(privateKey);
                         Log.d("connection test","Success");
-                    } catch (InvalidKeySpecException e) {
-                        e.printStackTrace();
+                    } catch (InvalidKeySpecException b) {
+                        b.printStackTrace();
                         Log.d("Connection Failure", "Fail");
                     }
 
                     try {
-                        userAccount.setPublicKey(userAccount.publicKeyFromHex(user.getEmail()));
-                    } catch (InvalidKeySpecException e) {
-                        e.printStackTrace();
+                        PublicKey publicKey = userAccount.publicKeyFromHex(user.getEmail());
+                        Log.d("THIS IS THE PUBLIC KEY", publicKey.toString());
+                        userAccount.setPublicKey(publicKey);
+                    } catch (InvalidKeySpecException c) {
+                        c.printStackTrace();
                     }
                     privateKey = userAccount.getPrivateKey();
                     publicKey = userAccount.getPublicKey();
+                    Log.d("Is this null?", privateKey.toString());
 
                     try {
                         userAccountApi.loadAccount(publicKey.toString(),privateKey.toString());
-                    } catch (InvalidKeySpecException e) {
-                        e.printStackTrace();
+                    } catch (InvalidKeySpecException d) {
+                        d.printStackTrace();
                     }
 
 
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
-                }
+                //}end of else
 
             }
         });
@@ -181,81 +210,81 @@ public class MakeAccount extends AppCompatActivity {
 
 
 
-    private String hashData(String data){
-
-        TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
-        TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
-        EditText e = (EditText)findViewById(R.id.email);  //email
-        EditText p = (EditText) findViewById(R.id.user_pin); //pin
-        EditText cPin = (EditText) findViewById(R.id.confirm_pin);
-        EditText secret = (EditText) findViewById(R.id.secret_text);
-
-        String UFirst = first.getEditText().getText().toString();
-        String ULast = last.getEditText().getText().toString();
-        String UEmail = e.getText().toString();
-        String UPin = p.getText().toString();
-        String confirmPin = cPin.getText().toString();
-        String userSecret = secret.getText().toString();
-
-
-
-
-        Log.d("FName",UFirst);
-        int duration =Toast.LENGTH_LONG;
-        Context context = getApplicationContext();
-        CharSequence text = "Pin Doesn't Match";
-        CharSequence acceptedText = "Pin Accepted";
-        CharSequence userExists = "This user already has an account";
-        CharSequence added = "Added user!";
-        Toast added_to_DB = Toast.makeText(context,added,duration);
-        Toast toast = Toast.makeText(context,text,duration);
-        Toast accToast = Toast.makeText(context,acceptedText,duration);
-        Toast existToast = Toast.makeText(context,userExists,duration);
-
-        if(!(UPin.equals(confirmPin))){
-            toast.show();
-
-        }else{
-            accToast.show();
-        }
-
-        String to_hash = data;
-
-        String cp_hash = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("Sha-256");
-            byte[] user_hash = md.digest(to_hash.getBytes());
-            BigInteger big_num = new BigInteger(1, user_hash);
-            String hashed_val = big_num.toString(16);
-
-            while (hashed_val.length() < 32) {
-                hashed_val = "O" + hashed_val;
-            }
-//            if(MakeAccount.this.bigchainDB.contains(hashed_val)){
-//                existToast.show();
-//                return null;
+//    private String hashData(String data){
+//
+//        TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
+//        TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
+//        EditText e = (EditText)findViewById(R.id.email);  //email
+//        EditText p = (EditText) findViewById(R.id.user_pin); //pin
+//        EditText cPin = (EditText) findViewById(R.id.confirm_pin);
+//        EditText secret = (EditText) findViewById(R.id.secret_text);
+//
+//        String UFirst = first.getEditText().getText().toString();
+//        String ULast = last.getEditText().getText().toString();
+//        String UEmail = e.getText().toString();
+//        String UPin = p.getText().toString();
+//        String confirmPin = cPin.getText().toString();
+//        String userSecret = secret.getText().toString();
+//
+//
+//
+//
+//        Log.d("FName",UFirst);
+//        int duration =Toast.LENGTH_LONG;
+//        Context context = getApplicationContext();
+//        CharSequence text = "Pin Doesn't Match";
+//        CharSequence acceptedText = "Pin Accepted";
+//        CharSequence userExists = "This user already has an account";
+//        CharSequence added = "Added user!";
+//        Toast added_to_DB = Toast.makeText(context,added,duration);
+//        Toast toast = Toast.makeText(context,text,duration);
+//        Toast accToast = Toast.makeText(context,acceptedText,duration);
+//        Toast existToast = Toast.makeText(context,userExists,duration);
+//
+//        if(!(UPin.equals(confirmPin))){
+//            toast.show();
+//
+//        }else{
+//            accToast.show();
+//        }
+//
+//        String to_hash = data;
+//
+//        String cp_hash = null;
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("Sha-256");
+//            byte[] user_hash = md.digest(to_hash.getBytes());
+//            BigInteger big_num = new BigInteger(1, user_hash);
+//            String hashed_val = big_num.toString(16);
+//
+//            while (hashed_val.length() < 32) {
+//                hashed_val = "O" + hashed_val;
 //            }
-//            else{
-//                added_to_DB.show(); //toast
-//            }
-
-            cp_hash = hashed_val;
-            user = new User(UFirst,ULast,UEmail,UPin,cp_hash,userSecret);
-            //add user to set... now add user to sharedPreferences
-            User.userSet.add(user);
-
-
-
-        }catch (NoSuchAlgorithmException al){
-            System.out.println("rip" + al);
-            return null;
-        }
-        Log.d("hash",cp_hash);
-        return cp_hash;
-
-
-
-    }
+////            if(MakeAccount.this.bigchainDB.contains(hashed_val)){
+////                existToast.show();
+////                return null;
+////            }
+////            else{
+////                added_to_DB.show(); //toast
+////            }
+//
+//            cp_hash = hashed_val;
+//            this.user = new User(UFirst,ULast,UEmail,UPin,cp_hash,userSecret);
+//            //add user to set... now add user to sharedPreferences
+//            User.userSet.add(user);
+//
+//
+//
+//        }catch (NoSuchAlgorithmException al){
+//            System.out.println("rip" + al);
+//            return null;
+//        }
+//        Log.d("hash",cp_hash);
+//        return cp_hash;
+//
+//
+//
+//    }
 
 
 
