@@ -79,12 +79,6 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
             public void run() {
 
                 try {
-                    bigchainDBApi.setConfig();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                try {
                     //TODO: Have a class for available funds...
                     bigchainDBApi.sendTransaction(qResult);
                     Log.d("WIN","Transaction sent!");

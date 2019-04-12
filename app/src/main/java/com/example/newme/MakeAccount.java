@@ -16,19 +16,28 @@ import android.widget.Toast;
 import android.content.Intent;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.util.HashSet;
 import java.util.Set;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import com.bigchaindb.model.Account;
+import com.bigchaindb.api.AccountApi;
+import com.bigchaindb.model.GenericCallback;
+
+import okhttp3.Response;
 
 import static com.bigchaindb.api.AccountApi.loadAccount;
 
 
 public class MakeAccount extends AppCompatActivity {
     public static User user;
-    private static Set bigchainDB = new HashSet<User>();
+    Bigchain bigchainDBApi = new Bigchain(this.handleServerResponse());
+    private static final String TAG = "MakeAccountActivity";
+    int SUCCESS_CODE = 1;
+    PublicKey publicKey = null;
+    PrivateKey privateKey = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,7 +87,23 @@ public class MakeAccount extends AppCompatActivity {
                     userDataEditor.apply();
                     //commmit to file ^^^^
 
-                    Account userAccount = new Account();//com.bigchaindb.model.account/unt();
+
+                    /**
+                     * There are two docs for creating accounts in different parts of the repo
+                     * userAccountAPI allows the creation of the  accout,
+                     *
+                     * userAccount = new Account allows setting public and private keys as well as getting them.
+                     */
+
+                    AccountApi userAccountApi = new AccountApi();//com.bigchaindb.model.account/unt();
+                    userAccountApi.createAccount();
+                    Account userAccount = new Account();
+                    try {
+                        bigchainDBApi.setConfig();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                     try {
                         userAccount.setPrivateKey(userAccount.privateKeyFromHex(user.getSecret()));
                         Log.d("connection test","Success");
@@ -92,7 +117,14 @@ public class MakeAccount extends AppCompatActivity {
                     } catch (InvalidKeySpecException e) {
                         e.printStackTrace();
                     }
+                    privateKey = userAccount.getPrivateKey();
+                    publicKey = userAccount.getPublicKey();
 
+                    try {
+                        userAccountApi.loadAccount(publicKey.toString(),privateKey.toString());
+                    } catch (InvalidKeySpecException e) {
+                        e.printStackTrace();
+                    }
 
 
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
@@ -105,6 +137,45 @@ public class MakeAccount extends AppCompatActivity {
 
 
     }
+
+    private GenericCallback handleServerResponse() {
+        //define callback methods to verify response from BigchainDBServer
+        GenericCallback callback = new GenericCallback() {
+
+            @Override
+            public void transactionMalformed(Response response) {
+                Log.d(TAG, "malformed " + response.message());
+                onFailure();
+            }
+
+            @Override
+            public void pushedSuccessfully(Response response) {
+                Log.d(TAG, "pushedSuccessfully");
+                onSuccess(response);
+            }
+
+            @Override
+            public void otherError(Response response) {
+                Log.d(TAG, "otherError" + response.message());
+                onFailure();
+            }
+        };
+
+        return callback;
+    }
+
+    private void onSuccess(Response response) {
+        SUCCESS_CODE = 0;
+        Log.d(TAG, "(*) Transaction successfully committed..");
+        Log.d(TAG, response.toString());
+    }
+
+    private void onFailure() {
+        SUCCESS_CODE = -1;
+        Log.d(TAG, "Transaction failed");
+        Log.d(TAG, "Transaction failed");
+    }
+
 
 
 
