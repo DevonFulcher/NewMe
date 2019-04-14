@@ -81,6 +81,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
                 try {
                     //TODO: Have a class for available funds...
+                    //TODO: send transaction should actually be a transfer
                     bigchainDBApi.sendTransaction(qResult);
                     Log.d("WIN","Transaction sent!");
                     Intent toProfile = new Intent(QRCode.this,ProfilePage.class);

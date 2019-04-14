@@ -79,7 +79,7 @@ public class Bigchain{
                 .buildAndSign((EdDSAPublicKey) KEYS.getPublic(), (EdDSAPrivateKey) KEYS.getPrivate())
                 .sendTransaction(this.callback);
 
-        Log.d(TAG, "(*) Transaction successfully sent.. - " + transaction.getId());
+        Log.d(TAG, "(*) Transaction registered.. - " + transaction.getId());
 
 
         return transaction;
