@@ -53,29 +53,5 @@ public class SignIn extends MainActivity {
 
     }
 
-//    public boolean checkSharedPreferences(){
-//        //access shared preferences here=====>>>>
-//        //Preference Managaer found here:
-//        //  https://stackoverflow.com/questions/5946135/difference-between-getdefaultsharedpreferences-and-getsharedpreferences
-//        //google docs:
-//        //  https://developer.android.com/training/data-storage/shared-preferences
-//        //if a user has registered an account then ask for login pin...
-//
-//        //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-//        //SharedPreferences sharedPref = this.getPreferences(0);
-//        SharedPreferences sharedPref = getSharedPreferences("com.example.newme.USER_DATA",0 );
-////        final String getPin = sharedPref.getString("Pin","NULL");
-//        if(sharedPref.contains("Pin") && sharedPref.contains("Email")){
-//            Log.d("check",sharedPref.getString("Pin","True"));
-////            Intent signInIntent = new Intent(MainActivity.this,SignIn.class);
-////            SignIn.this.startActivity(signInIntent);
-//            return true;
-//        }else{
-//            Log.d("check","Need Toast \n");
-////            Intent needToMakeAccountIntent = new Intent(MainActivity.this,MakeAccount.class);
-////            SignIn.this.startActivity(needToMakeAccountIntent);
-//        }
-//        Log.d("Check Failed",sharedPref.getString("Pin","no val"));
-//        return false;
-//    }
+
 }

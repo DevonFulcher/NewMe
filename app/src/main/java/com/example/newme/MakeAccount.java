@@ -15,16 +15,23 @@ import android.widget.EditText;
 
 import android.widget.Toast;
 import android.content.Intent;
+
+import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.bigchaindb.model.Account;
 import com.bigchaindb.api.AccountApi;
 import com.bigchaindb.model.GenericCallback;
 import okhttp3.Response;
 import com.bigchaindb.model.Asset;
-
+import com.bigchaindb.model.FulFill;
+import com.bigchaindb.model.MetaData;
+import com.bigchaindb.model.Transaction;
 
 
 public class MakeAccount extends AppCompatActivity {
@@ -34,15 +41,17 @@ public class MakeAccount extends AppCompatActivity {
     int SUCCESS_CODE = 1;
     PublicKey publicKey = null;
     PrivateKey privateKey = null;
+    public static User user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //new Thread(Runnable){
 
         /**
          * shared preferences used to save data, call in main to check if there is data of a user.
          * https://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String,%20int)
          * name of the shared preferences file will be
          */
-        SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA",0);
+        SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA", 0);
         //SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
         final SharedPreferences.Editor userDataEditor = saveData.edit();
         //a sharedPreferences file that will allow us to save user data
@@ -58,18 +67,18 @@ public class MakeAccount extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
-
         final Button button = findViewById(R.id.create_button);
         button.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
             public void onClick(View v) {
+//                new Thread(new Runnable() {
+//                    public void run() {
 
                 TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
-                TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
-                EditText e = (EditText)findViewById(R.id.email);  //email
+                TextInputLayout last = (TextInputLayout) findViewById(R.id.last_name);
+                EditText e = (EditText) findViewById(R.id.email);  //email
                 EditText p = (EditText) findViewById(R.id.user_pin); //pin
                 EditText cPin = (EditText) findViewById(R.id.confirm_pin);
                 EditText secret = (EditText) findViewById(R.id.secret_text);
@@ -81,35 +90,36 @@ public class MakeAccount extends AppCompatActivity {
                 String confirmPin = cPin.getText().toString();
                 String userSecret = secret.getText().toString();
 
-                final User user = new User(UFirst,ULast,UEmail,UPin,confirmPin,userSecret);
+                user = new User(UFirst, ULast, UEmail, UPin, confirmPin, userSecret);
 
 
                 Context context = getApplicationContext();
                 CharSequence acct_exists = "This account already exists";
-                int duration =Toast.LENGTH_LONG;
-                Toast acctToast = Toast.makeText(context,acct_exists,duration);
+                int duration = Toast.LENGTH_LONG;
+                Toast acctToast = Toast.makeText(context, acct_exists, duration);
 
                 //TODO: query bigchainDB to check if user's public key already exists
                 //TODO: make user account https://github.com/bigchaindb/java-bigchaindb-driver/blob/master/src/main/java/com/bigchaindb/model/Account.java
-                    //Make user accounts
-                    userDataEditor.putString("FirstName",user.getFirstName());
-                    userDataEditor.putString("LastName",user.getLastName());
-                    userDataEditor.putString("Email",user.getEmail());
-                    userDataEditor.putString("Pin",user.getPin());
+                //Make user accounts
+                userDataEditor.putString("FirstName", user.getFirstName());
+                userDataEditor.putString("LastName", user.getLastName());
+                userDataEditor.putString("Email", user.getEmail());
+                userDataEditor.putString("Pin", user.getPin());
 
-                    /**
-                     * There are two docs for creating accounts in different parts of the bigchaindb repo
-                     * userAccountAPI allows the creation of the  accout,
-                     *
-                     * userAccount = new Account allows setting public and private keys as well as getting them.
-                     *
-                     * Creating a new account sets the public and private keys. Call api.account to retrieve the public and private keys. Do not have to manually make them.
-                     */
-                    try {
-                        bigchainDBApi.setConfig();  //connect to our bigchaindb node?
-                    } catch (Exception a) {
-                        a.printStackTrace();
-                    }
+                /**
+                 * There are two docs for creating accounts in different parts of the bigchaindb repo
+                 * userAccountAPI allows the creation of the  accout,
+                 *
+                 * userAccount = new Account allows setting public and private keys as well as getting them.
+                 *
+                 * Creating a new account sets the public and private keys. Call api.account to retrieve the public and private keys. Do not have to manually make them.
+                 */
+                try {
+
+                    bigchainDBApi.setConfig();  //connect to our bigchaindb node?
+                } catch (Exception a) {
+                    a.printStackTrace();
+                }
 
                 /**
                  * it seems you need to create an account, create a variable to the new account then call load account.
@@ -117,22 +127,23 @@ public class MakeAccount extends AppCompatActivity {
                  */
 
                 AccountApi userAccountApi = new AccountApi();//com.bigchaindb.model.account
-
                 Account accessUserAccount = userAccountApi.createAccount();
 
-                userDataEditor.putString("PublicKey",accessUserAccount.getPublicKey().toString());
-                userDataEditor.putString("PrivateKey",accessUserAccount.getPrivateKey().toString());
+
+                userDataEditor.putString("PublicKey", accessUserAccount.getPublicKey().toString());
+                userDataEditor.putString("PrivateKey", accessUserAccount.getPrivateKey().toString());
                 userDataEditor.apply();
                 //commmit to file^^^^^
 
                 try {
-                    userAccountApi.loadAccount(accessUserAccount.getPublicKey().toString(),accessUserAccount.getPrivateKey().toString());
+                    userAccountApi.loadAccount(accessUserAccount.getPublicKey().toString(), accessUserAccount.getPrivateKey().toString());
                 } catch (InvalidKeySpecException e1) {
-                        e1.printStackTrace();
+                    e1.printStackTrace();
                 }
 
 
-                Asset userAsset = new Asset(user,User.class);
+                Asset userAsset = new Asset(user, User.class);
+
                 try {
                     bigchainDBApi.sendTransaction(userAsset.getData() + userAsset.getId());
                 } catch (Exception e1) {
@@ -141,11 +152,12 @@ public class MakeAccount extends AppCompatActivity {
 
 
                 Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
-                    MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
-                    MakeAccount.this.finish();
+                MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
+                MakeAccount.this.finish();
 
             }
         });
+
 
 
     }

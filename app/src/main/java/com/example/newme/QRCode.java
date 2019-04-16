@@ -1,6 +1,7 @@
 package com.example.newme;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 //import com.bigchaindb.builders.BigchainDbConfigBuilder;
 //import com.bigchaindb.constants.BigchainDbApi;
+import com.bigchaindb.model.MetaData;
 import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 //import android.app.ProgressDialog;
@@ -23,7 +25,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import java.security.Key;
+import java.security.KeyPair;
+import java.util.Map;
+import java.util.TreeMap;
+
 import okhttp3.Response;
+
+import static org.slf4j.MDC.put;
 //import com.bigchaindb.api.TransactionsApi;
 //
 //import javax.websocket.RemoteEndpoint;
@@ -54,10 +64,13 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     private static final int REQUEST_SIGNUP = 0;
     public Bigchain bigchainDBApi = new Bigchain(this.handleServerResponse());
 
+    //SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA",0);
+    User user = MakeAccount.user;
     //TODO use model.transactions
     int SUCCESS_CODE = 1;
     ZXingScannerView scannerView;
     static int PReqCode = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         checkAndRequestPermission();
@@ -76,14 +89,26 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
 
 //      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
+        //FROM: https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
         new Thread(new Runnable() {
             public void run() {
 
                 try {
+                    bigchainDBApi.setConfig();
                     //TODO: Have a class for available funds...
                     //TODO: send transaction should actually be a transfer
-                    bigchainDBApi.sendTransaction(qResult);
-                    Log.d("WIN","Transaction sent!");
+                    // create New asset
+                    Map<String, String> assetData = new TreeMap<String, String>() {{
+                        put("firstName", user.getFirstName());
+                        put("lastName", user.getLastName());
+                        put("purpose", "register a new voucher!");
+                    }};
+                    MetaData metaData = new MetaData();
+                    metaData.setMetaData("Forus Transaction","To be used a X Y Z");
+                    KeyPair keys = Bigchain.getKeys();
+                    bigchainDBApi.doCreate(assetData,metaData,keys);
+
+                    Log.d("WIN","Transaction sent?");
                     Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
                     startActivity(toProfile);
 
