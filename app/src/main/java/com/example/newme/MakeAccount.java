@@ -135,11 +135,11 @@ public class MakeAccount extends AppCompatActivity {
                 userDataEditor.apply();
                 //commmit to file^^^^^
 
-                try {
-                    userAccountApi.loadAccount(accessUserAccount.getPublicKey().toString(), accessUserAccount.getPrivateKey().toString());
-                } catch (InvalidKeySpecException e1) {
-                    e1.printStackTrace();
-                }
+//                try {
+//                    userAccountApi.loadAccount(accessUserAccount.getPublicKey().toString(), accessUserAccount.getPrivateKey().toString());
+//                } catch (InvalidKeySpecException e1) {
+//                    e1.printStackTrace();
+//                }
 
 
                 Asset userAsset = new Asset(user, User.class);

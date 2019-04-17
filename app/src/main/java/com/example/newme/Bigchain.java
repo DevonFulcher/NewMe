@@ -17,7 +17,12 @@ import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import net.i2p.crypto.eddsa.KeyPairGenerator;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.KeyPair;
 import java.util.Date;
 import java.util.Map;
@@ -50,12 +55,48 @@ public class Bigchain{
 
     /**
      * configures connection url and credentials
+     *
+     * URL url = new URL("http://www.android.com/");
+     *    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+     *    try {
+     *      InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+     *      readStream(in);
+     *    } finally {
+     *      urlConnection.disconnect();
+     *    }
+     *
+     *
      */
     public static void setConfig() {
-        BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL)
-                .addToken("app_id","")
-                .addToken("app_key","").setup();
+
+        URL url = null;
+        try {
+            url = new URL(bigchainDBNodeURL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        HttpURLConnection urlConnection = null;
+        try {
+            urlConnection = (HttpURLConnection) url.openConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+           InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            BigchainDbConfigBuilder
+                    .baseUrl(String.valueOf(in))
+                    .addToken("app_id","")
+                    .addToken("app_key","").setup();
+         } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+           urlConnection.disconnect();
+         }
+
+//        BigchainDbConfigBuilder
+//                .baseUrl(bigchainDBNodeURL)
+//                .addToken("app_id","")
+//                .addToken("app_key","").setup();
 
 
     }

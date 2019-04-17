@@ -85,7 +85,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         //Need to return the result to pass it to TransactionActivity.
         //bigchainDBApi.execute();
         //bigchainDBApi.setConfig();//set the configuration of the DB.
-        qResult = toPrettyFormat(result.getText());
+        //qResult = toPrettyFormat(result.getText());
 
 
 //      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
@@ -95,6 +95,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
                 try {
                     bigchainDBApi.setConfig();
+                    Log.d("try","Transaction sent?");
                     //TODO: Have a class for available funds...
                     //TODO: send transaction should actually be a transfer
                     // create New asset
@@ -106,8 +107,9 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                     MetaData metaData = new MetaData();
                     metaData.setMetaData("Forus Transaction","To be used a X Y Z");
                     KeyPair keys = Bigchain.getKeys();
-                    bigchainDBApi.doCreate(assetData,metaData,keys);
+                    //bigchainDBApi.doCreate(assetData,metaData,keys);
 
+                    bigchainDBApi.sendTransaction(assetData.toString());
                     Log.d("WIN","Transaction sent?");
                     Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
                     startActivity(toProfile);
