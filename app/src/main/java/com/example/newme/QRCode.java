@@ -46,7 +46,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     public void handleResult(Result result) {
         //Need to return the result to pass it to TransactionActivity.
         qResult = result.getText();
-        MainActivity.resultTV.setText(result.getText());
+        //MainActivity.resultTV.setText(result.getText());
         try {
             //Bigchain.sendTransaction(qResult);
             this.send();
@@ -158,7 +158,8 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     public void onBackPressed() {
         // Disable going back to the MainActivity
-        moveTaskToBack(true);
+        //moveTaskToBack(true);
+        this.finish();
     }
 
     public void onSendSuccess(Transaction successfulTx) {
