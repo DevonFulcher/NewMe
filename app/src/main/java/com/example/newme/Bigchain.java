@@ -45,7 +45,7 @@ public class Bigchain{
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "https://35.212.69.121/";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "http://localhost:/2222/";//"https://35.212.69.121/";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
 
     public Bigchain(GenericCallback callback){
@@ -69,34 +69,34 @@ public class Bigchain{
      */
     public static void setConfig() {
 
-        URL url = null;
-        try {
-            url = new URL(bigchainDBNodeURL);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        HttpURLConnection urlConnection = null;
-        try {
-            urlConnection = (HttpURLConnection) url.openConnection();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-           InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            BigchainDbConfigBuilder
-                    .baseUrl(String.valueOf(in))
-                    .addToken("app_id","")
-                    .addToken("app_key","").setup();
-         } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-           urlConnection.disconnect();
-         }
+//        URL url = null;
+//        try {
+//            url = new URL(bigchainDBNodeURL);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        HttpURLConnection urlConnection = null;
+//        try {
+//            urlConnection = (HttpURLConnection) url.openConnection();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//           InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+//            BigchainDbConfigBuilder
+//                    .baseUrl(String.valueOf(in))
+//                    .addToken("app_id","")
+//                    .addToken("app_key","").setup();
+//         } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//           urlConnection.disconnect();
+//         }
 
-//        BigchainDbConfigBuilder
-//                .baseUrl(bigchainDBNodeURL)
-//                .addToken("app_id","")
-//                .addToken("app_key","").setup();
+        BigchainDbConfigBuilder
+                .baseUrl(bigchainDBNodeURL)
+                .addToken("app_id","")
+                .addToken("app_key","").setup();
 
 
     }
@@ -104,7 +104,7 @@ public class Bigchain{
     public Transaction sendTransaction(String data) throws Exception {
 
         Log.d(TAG, "Setting configuration..");
-        setConfig();
+        this.setConfig();
         Transaction transaction = null;
 
         //create asset data
