@@ -114,12 +114,9 @@ public class MakeAccount extends AppCompatActivity {
                  *
                  * Creating a new account sets the public and private keys. Call api.account to retrieve the public and private keys. Do not have to manually make them.
                  */
-                try {
 
-                    bigchainDBApi.setConfig();  //connect to our bigchaindb node?
-                } catch (Exception a) {
-                    a.printStackTrace();
-                }
+
+                bigchainDBApi.setConfig();  //connect to our bigchaindb node?
 
                 /**
                  * it seems you need to create an account, create a variable to the new account then call load account.
@@ -135,20 +132,31 @@ public class MakeAccount extends AppCompatActivity {
                 userDataEditor.apply();
                 //commmit to file^^^^^
 
-//                try {
-//                    userAccountApi.loadAccount(accessUserAccount.getPublicKey().toString(), accessUserAccount.getPrivateKey().toString());
-//                } catch (InvalidKeySpecException e1) {
-//                    e1.printStackTrace();
-//                }
-
 
                 Asset userAsset = new Asset(user, User.class);
-
                 try {
                     bigchainDBApi.sendTransaction(userAsset.getData() + userAsset.getId());
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
+
+
+
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                Log.d(TAG, "Success code - " + SUCCESS_CODE);
+                                while(SUCCESS_CODE == 1){
+                                    try {
+                                        Thread.sleep(500);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
+                                }
+
+                            }
+                        }, 3000);
 
 
                 Intent intent = new Intent(MakeAccount.this, ProfilePage.class);

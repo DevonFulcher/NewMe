@@ -49,13 +49,13 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
      * Research found here:
      *  BigchainDB Java Driver - https://github.com/bigchaindb/java-bigchaindb-driver
      *
-     *  Transaction example - https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
+     * Transaction example - https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
      *      Probably need to move away from boiler plate code and try to implement the transaction example more closely.
      *
-     *  Boiler plate- https://github.com/bigchaindb/android-boilerplate
+     * Boiler plate- https://github.com/bigchaindb/android-boilerplate
      *
      * One of the errors being thrown:
-     *  https://www.slf4j.org/codes.html#StaticLoggerBinder
+     * https://www.slf4j.org/codes.html#StaticLoggerBinder
      *
      *
      */
@@ -95,21 +95,22 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
                 try {
                     bigchainDBApi.setConfig();
+
                     Log.d("try","Transaction sent?");
                     //TODO: Have a class for available funds...
                     //TODO: send transaction should actually be a transfer
                     // create New asset
-                    Map<String, String> assetData = new TreeMap<String, String>() {{
-                        put("firstName", user.getFirstName());
-                        put("lastName", user.getLastName());
-                        put("purpose", "register a new voucher!");
-                    }};
+//                    Map<String, String> assetData = new TreeMap<String, String>() {{
+//                        put("firstName", user.getFirstName());
+//                        put("lastName", user.getLastName());
+//                        put("purpose", "register a new voucher!");
+//                    }};
                     MetaData metaData = new MetaData();
                     metaData.setMetaData("Forus Transaction","To be used a X Y Z");
                     KeyPair keys = Bigchain.getKeys();
                     //bigchainDBApi.doCreate(assetData,metaData,keys);
 
-                    bigchainDBApi.sendTransaction(assetData.toString());
+                    bigchainDBApi.sendTransaction(qResult);
                     Log.d("WIN","Transaction sent?");
                     Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
                     startActivity(toProfile);
