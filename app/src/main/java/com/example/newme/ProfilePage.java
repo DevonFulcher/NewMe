@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class ProfilePage  extends AppCompatActivity {
 
     Button scanButton;
-    Button loginButton;
     Button profile;
     Button settings_button;
     Button voucher_button;

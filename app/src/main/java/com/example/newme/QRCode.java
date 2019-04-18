@@ -159,6 +159,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     public void onBackPressed() {
         // Disable going back to the MainActivity
         //moveTaskToBack(true);
+        scannerView.stopCamera();
         this.finish();
     }
 
