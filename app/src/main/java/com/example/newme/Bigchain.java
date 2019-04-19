@@ -1,6 +1,6 @@
 package com.example.newme;
 
-import android.os.AsyncTask;
+
 import android.util.Log;
 
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
@@ -10,19 +10,14 @@ import com.bigchaindb.model.FulFill;
 import com.bigchaindb.model.GenericCallback;
 import com.bigchaindb.model.MetaData;
 import com.bigchaindb.model.Transaction;
-import com.google.zxing.oned.rss.RSS14Reader;
 
 
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import net.i2p.crypto.eddsa.KeyPairGenerator;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 import java.security.KeyPair;
 import java.util.Date;
 import java.util.Map;
@@ -78,6 +73,8 @@ public class Bigchain{
 
 
     }
+
+
 
     public Transaction sendTransaction(String data) throws Exception {
 

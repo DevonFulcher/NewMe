@@ -35,6 +35,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.bigchaindb:bigchaindb-driver:1.1'
+    implementation 'org.mongodb:mongo-java-driver:3.10.2'//mongodb driver
     //might need version 1.2, not sure
     implementation 'com.android.support:multidex:1.0.3'
 }

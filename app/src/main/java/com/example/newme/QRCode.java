@@ -9,14 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-//import com.bigchaindb.builders.BigchainDbConfigBuilder;
-//import com.bigchaindb.constants.BigchainDbApi;
-import com.bigchaindb.model.MetaData;
 import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
-//import android.app.ProgressDialog;
-//import android.os.Bundle;
-//import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.content.Intent;
 import com.bigchaindb.model.GenericCallback;
@@ -25,18 +20,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import java.security.Key;
-import java.security.KeyPair;
-import java.util.Map;
-import java.util.TreeMap;
-
 import okhttp3.Response;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.ServerAddress;
+import com.mongodb.MongoCredential;
+import com.mongodb.MongoClientOptions;
 
-import static org.slf4j.MDC.put;
-//import com.bigchaindb.api.TransactionsApi;
-//
-//import javax.websocket.RemoteEndpoint;
 
 
 public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler{
@@ -83,9 +73,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     public void handleResult(Result result) {
         //Need to return the result to pass it to TransactionActivity.
-        //bigchainDBApi.execute();
-        //bigchainDBApi.setConfig();//set the configuration of the DB.
-        //qResult = toPrettyFormat(result.getText());
+
 
 
 //      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
@@ -99,16 +87,6 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                     Log.d("try","Transaction sent?");
                     //TODO: Have a class for available funds...
                     //TODO: send transaction should actually be a transfer
-                    // create New asset
-//                    Map<String, String> assetData = new TreeMap<String, String>() {{
-//                        put("firstName", user.getFirstName());
-//                        put("lastName", user.getLastName());
-//                        put("purpose", "register a new voucher!");
-//                    }};
-                    MetaData metaData = new MetaData();
-                    metaData.setMetaData("Forus Transaction","To be used a X Y Z");
-                    KeyPair keys = Bigchain.getKeys();
-                    //bigchainDBApi.doCreate(assetData,metaData,keys);
 
                     bigchainDBApi.sendTransaction(qResult);
                     Log.d("WIN","Transaction sent?");
