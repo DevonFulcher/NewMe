@@ -21,12 +21,20 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import okhttp3.Response;
+
+import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.ServerAddress;
 import com.mongodb.MongoCredential;
 import com.mongodb.MongoClientOptions;
+import com.mongodb.client.ClientSession;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
+import org.bson.Document;
+
+import static com.example.newme.Bigchain.connectToMongo;
 
 
 public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler{
@@ -82,14 +90,24 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
             public void run() {
 
                 try {
-                    bigchainDBApi.setConfig();
+                    //bigchainDBApi.setConfig();
+                    MongoClient mongo = Bigchain.connectToMongo();
+                    MongoDatabase database = mongo.getDatabase("bigchain");
+
+                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
+                    Document doc = new Document("voucher", "BigchainDB")
+                            .append("voucher", qResult);
+
+
+                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
+                    transactionDoc.insertOne(doc);
 
                     Log.d("try","Transaction sent?");
                     //TODO: Have a class for available funds...
                     //TODO: send transaction should actually be a transfer
 
-                    bigchainDBApi.sendTransaction(qResult);
-                    Log.d("WIN","Transaction sent?");
+                   // bigchainDBApi.sendTransaction(qResult);
+                    //Log.d("WIN","Transaction sent?");
                     Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
                     startActivity(toProfile);
 

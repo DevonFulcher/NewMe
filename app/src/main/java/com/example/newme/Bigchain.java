@@ -22,8 +22,13 @@ import java.security.KeyPair;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
-
 import okhttp3.Response;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.ServerAddress;
+import com.mongodb.MongoCredential;
+import com.mongodb.MongoClientOptions;
+import com.mongodb.client.MongoClients;
 
 /**
  * simple usage of BigchainDB Java driver (https://github.com/bigchaindb/java-bigchaindb-driver)
@@ -41,8 +46,9 @@ public class Bigchain{
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "http://localhost/9984/";//"https://35.212.69.121/";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "http://localhost/2222/";//"https://35.212.69.121/";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
+    private static MongoClient mongoClient;
 
     public Bigchain(GenericCallback callback){
 
@@ -105,6 +111,20 @@ public class Bigchain{
 
         return transaction;
 
+    }
+
+    public static MongoClient connectToMongo(){
+
+        mongoClient = new MongoClient(new MongoClientURI(bigchainDBNodeURL));
+        return mongoClient;
+        //http://mongodb.github.io/mongo-java-driver/3.10/javadoc/com/mongodb/client/MongoClients.html
+        //connect to mongoDB server and make function to add transactions/users
+        //need to check that connection happens...
+    }
+
+    public static String mongoTransaction(MongoClient MC){
+        MC.getDatabase("bigchain");
+        return "";
     }
 
 

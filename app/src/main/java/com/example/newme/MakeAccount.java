@@ -145,7 +145,7 @@ public class MakeAccount extends AppCompatActivity {
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {
-                                Log.d(TAG, "Success code - " + SUCCESS_CODE);
+                                Log.d(TAG, "MEMES - " + SUCCESS_CODE);
                                 while(SUCCESS_CODE == 1){
                                     try {
                                         Thread.sleep(500);
@@ -169,6 +169,8 @@ public class MakeAccount extends AppCompatActivity {
 
 
     }
+
+
 
     private GenericCallback handleServerResponse() {
         //define callback methods to verify response from BigchainDBServer
