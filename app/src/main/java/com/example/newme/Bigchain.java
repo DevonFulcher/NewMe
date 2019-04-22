@@ -46,7 +46,7 @@ public class Bigchain{
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "mongodb://27017";//"http://localhost/2222/";//"https://35.212.69.121/";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "http://localhost:9984";
     private GenericCallback callback = null;
     private static MongoClient mongoClient;
 
@@ -55,20 +55,7 @@ public class Bigchain{
         this.callback = callback;
     }
 
-    /**
-     * configures connection url and credentials
-     *
-     * URL url = new URL("http://www.android.com/");
-     *    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-     *    try {
-     *      InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-     *      readStream(in);
-     *    } finally {
-     *      urlConnection.disconnect();
-     *    }
-     *
-     *
-     */
+
     public static void setConfig() {
 
 
