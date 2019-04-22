@@ -1,6 +1,7 @@
 package com.example.newme;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
@@ -18,15 +19,28 @@ import android.content.Intent;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
 public class MakeAccount extends AppCompatActivity {
-    private static User user;
+    public static User user;
     private static Set bigchainDB = new HashSet<User>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /**
+         * shared preferences used to save data, call in main to check if there is data of a user.
+         * https://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String,%20int)
+         * name of the shared preferences file will be
+         */
+        SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA",0);
+        //SharedPreferences savedData = this.getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences.Editor userDataEditor = saveData.edit();
+        //a sharedPreferences file that will allow us to save user data
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_account);
         Intent intent = getIntent();
@@ -50,10 +64,14 @@ public class MakeAccount extends AppCompatActivity {
                     acctToast.show();//this account already exists
 
                 }else{
-                    Log.d("check","add here \n");
-                    MakeAccount.this.bigchainDB.add(user);
-                    String n = user.getFirstName();
-                    Log.d("test", n);
+                    //Add Strings to the defaultSharedPreferences file
+                    //use key to get info
+                    userDataEditor.putString("FirstName",user.getFirstName());
+                    userDataEditor.putString("LastName",user.getLastName());
+                    userDataEditor.putString("Email",user.getEmail());
+                    userDataEditor.putString("Pin",user.getPin());
+                    userDataEditor.apply();
+                    //commmit to file ^^^^
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);
                     MakeAccount.this.startActivity(intent); // startActivity allow you to Profile Page
                     MakeAccount.this.finish();
@@ -65,13 +83,9 @@ public class MakeAccount extends AppCompatActivity {
 
     }
 
-    private boolean makeAcct(){
-        return true;
-    }
 
 
     private String hashData(){
-
 
         TextInputLayout first = (TextInputLayout) findViewById(R.id.first_name);
         TextInputLayout last = (TextInputLayout)findViewById(R.id.last_name);
@@ -123,10 +137,13 @@ public class MakeAccount extends AppCompatActivity {
                 return null;
             }
             else{
-                added_to_DB.show();
+                added_to_DB.show(); //toast
             }
             cp_hash = hashed_val;
             user = new User(UFirst,ULast,UEmail,UPin,cp_hash);
+            //add user to set... now add user to sharedPreferences
+            User.userSet.add(user);
+
 
 
         }catch (NoSuchAlgorithmException al){
@@ -135,7 +152,6 @@ public class MakeAccount extends AppCompatActivity {
         }
         Log.d("hash",cp_hash);
         return cp_hash;
-
 
 
 
