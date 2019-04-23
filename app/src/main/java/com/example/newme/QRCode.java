@@ -90,12 +90,12 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 //        bigchainDBApi.setConfig();
         //new Thread(new Runnable() {
         //TODO: need to override strict mode!!!
-        new android.os.Handler().postDelayed(
-                new Runnable(){
-                    @Override
-                    public void run() {
+        Thread thread = new Thread(new Runnable(){
 
-                        try {
+            @Override
+            public void run() {
+
+                try {
 
 //                    bigchainDBApi.setConfig();
 //                    MongoClient mongo = Bigchain.connectToMongo();
@@ -105,58 +105,31 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 //                    Document doc = new Document("voucher", "BigchainDB")
 //                            .append("voucher", qResult);
 //
-//
 //                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
 //                    transactionDoc.insertOne(doc);
 
-                            Log.d("try","Transaction sent?");
-                            //TODO: Have a class for available funds...
-                            //TODO: send transaction should actually be a transfer
-                            qResult = result;
-                            bigchainDBApi.sendTransaction(qResult.getText());
-                            Log.d("WIN","Transaction sent?");
-                            Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
-                            startActivity(toProfile);
+                    Log.d("try","Transaction sent?");
+                    //TODO: Have a class for available funds...
+                    //TODO: send transaction should actually be a transfer
+                    qResult = result;
+                    bigchainDBApi.sendTransaction(qResult.getText());
+                    Log.d("WIN","Transaction sent?");
+                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
+                    startActivity(toProfile);
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-                    }
-                },3000);
-            //public void run() {
-
-//                try {
-//
-////                    bigchainDBApi.setConfig();
-////                    MongoClient mongo = Bigchain.connectToMongo();
-////                    MongoDatabase database = mongo.getDatabase("bigchain");
-////
-////                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
-////                    Document doc = new Document("voucher", "BigchainDB")
-////                            .append("voucher", qResult);
-////
-////
-////                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
-////                    transactionDoc.insertOne(doc);
-//
-//                    Log.d("try","Transaction sent?");
-//                    //TODO: Have a class for available funds...
-//                    //TODO: send transaction should actually be a transfer
-//                    qResult = result;
-//                    bigchainDBApi.sendTransaction(qResult.getText());
-//                    Log.d("WIN","Transaction sent?");
-//                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
-//                    startActivity(toProfile);
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
+            }
+        });
+        thread.start();
 
 
+//                            Log.d("try","Transaction sent?");
+//                            //TODO: Have a class for available funds...
+//                            //TODO: send transaction should actually be a transfer
 
-            //}
-//        }).start();
 
 
         MainActivity.resultTV.setText(result.getText());
