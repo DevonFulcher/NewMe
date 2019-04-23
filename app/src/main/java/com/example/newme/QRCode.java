@@ -109,8 +109,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 //                    transactionDoc.insertOne(doc);
 
                     Log.d("try","Transaction sent?");
-                    //TODO: Have a class for available funds...
-                    //TODO: send transaction should actually be a transfer
+
                     qResult = result;
                     bigchainDBApi.sendTransaction(qResult.getText());
                     Log.d("WIN","Transaction sent?");
