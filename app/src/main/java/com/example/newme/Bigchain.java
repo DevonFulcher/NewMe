@@ -25,6 +25,7 @@ import java.util.TreeMap;
 import okhttp3.Response;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.jcraft.jsch.ChannelShell;
 import com.mongodb.ServerAddress;
 import com.mongodb.MongoCredential;
 import com.mongodb.MongoClientOptions;
@@ -46,7 +47,7 @@ public class Bigchain{
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "http://localhost:9984";
+    private static final String bigchainDBNodeURL = "http://35.211.78.232";
     private GenericCallback callback = null;
     private static MongoClient mongoClient;
 
@@ -60,7 +61,7 @@ public class Bigchain{
 
 
         BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL)
+                .baseUrl("http://35.211.78.232")
                 .addToken("app_id","")
                 .addToken("app_key","").setup();
 

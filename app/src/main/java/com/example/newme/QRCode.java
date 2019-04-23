@@ -86,21 +86,22 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
 //      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
         //FROM: https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
+//        bigchainDBApi.setConfig();
         new Thread(new Runnable() {
             public void run() {
 
                 try {
-                    bigchainDBApi.setConfig();
-                    //MongoClient mongo = Bigchain.connectToMongo();
-                    //MongoDatabase database = mongo.getDatabase("bigchain");
-
-                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
-                    //Document doc = new Document("voucher", "BigchainDB")
-                    //        .append("voucher", qResult);
-
-
-                    //MongoCollection<Document> transactionDoc = database.getCollection("transactions");
-                    //transactionDoc.insertOne(doc);
+                      bigchainDBApi.setConfig();
+//                    MongoClient mongo = Bigchain.connectToMongo();
+//                    MongoDatabase database = mongo.getDatabase("bigchain");
+//
+//                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
+//                    Document doc = new Document("voucher", "BigchainDB")
+//                            .append("voucher", qResult);
+//
+//
+//                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
+//                    transactionDoc.insertOne(doc);
 
                     Log.d("try","Transaction sent?");
                     //TODO: Have a class for available funds...
