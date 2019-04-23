@@ -22,6 +22,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import okhttp3.Response;
 
+
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -57,7 +58,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
      *
      *
      */
-    static String qResult = null;
+    static Result qResult = null;
     private static final String TAG = "TransactionActivity";
     private static final int REQUEST_SIGNUP = 0;
     public Bigchain bigchainDBApi = new Bigchain(this.handleServerResponse());
@@ -87,11 +88,16 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 //      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
         //FROM: https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
 //        bigchainDBApi.setConfig();
-        new Thread(new Runnable() {
-            public void run() {
+        //new Thread(new Runnable() {
+        //TODO: need to override strict mode!!!
+        new android.os.Handler().postDelayed(
+                new Runnable(){
+                    @Override
+                    public void run() {
 
-                try {
-                      //bigchainDBApi.setConfig();
+                        try {
+
+//                    bigchainDBApi.setConfig();
 //                    MongoClient mongo = Bigchain.connectToMongo();
 //                    MongoDatabase database = mongo.getDatabase("bigchain");
 //
@@ -103,23 +109,54 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 //                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
 //                    transactionDoc.insertOne(doc);
 
-                    Log.d("try","Transaction sent?");
-                    //TODO: Have a class for available funds...
-                    //TODO: send transaction should actually be a transfer
-                    qResult = toPrettyFormat(result.getText().toString());
-                    bigchainDBApi.sendTransaction(qResult);
-                    Log.d("WIN","Transaction sent?");
-                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
-                    startActivity(toProfile);
+                            Log.d("try","Transaction sent?");
+                            //TODO: Have a class for available funds...
+                            //TODO: send transaction should actually be a transfer
+                            qResult = result;
+                            bigchainDBApi.sendTransaction(qResult.getText());
+                            Log.d("WIN","Transaction sent?");
+                            Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
+                            startActivity(toProfile);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },3000);
+            //public void run() {
+
+//                try {
+//
+////                    bigchainDBApi.setConfig();
+////                    MongoClient mongo = Bigchain.connectToMongo();
+////                    MongoDatabase database = mongo.getDatabase("bigchain");
+////
+////                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
+////                    Document doc = new Document("voucher", "BigchainDB")
+////                            .append("voucher", qResult);
+////
+////
+////                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
+////                    transactionDoc.insertOne(doc);
+//
+//                    Log.d("try","Transaction sent?");
+//                    //TODO: Have a class for available funds...
+//                    //TODO: send transaction should actually be a transfer
+//                    qResult = result;
+//                    bigchainDBApi.sendTransaction(qResult.getText());
+//                    Log.d("WIN","Transaction sent?");
+//                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
+//                    startActivity(toProfile);
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 
 
 
-            }
-        }).start();
+            //}
+//        }).start();
 
 
         MainActivity.resultTV.setText(result.getText());
