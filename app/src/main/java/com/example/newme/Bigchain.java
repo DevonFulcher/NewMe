@@ -72,8 +72,8 @@ public class Bigchain{
 
     public Transaction sendTransaction(String data) throws Exception {
 
-        Log.d(TAG, "Setting configuration..");
-        this.setConfig();
+        //Log.d(TAG, "Setting configuration..");
+        //this.setConfig();
         Transaction transaction = null;
 
         //create asset data
@@ -129,7 +129,7 @@ public class Bigchain{
                     .addMetaData(metaData)
                     .operation(Operations.CREATE)
                     .buildAndSign((EdDSAPublicKey) keys.getPublic(), (EdDSAPrivateKey) keys.getPrivate())
-                    .sendTransaction(handleServerResponse());
+                    .sendTransaction(this.handleServerResponse());
 
             System.out.println("(*) CREATE Transaction sent.. - " + transaction.getId());
             return transaction.getId();
@@ -153,40 +153,7 @@ public class Bigchain{
 
 
 
-    public void doTransfer(String txId, MetaData metaData, KeyPair keys) throws Exception {
 
-        Map<String, String> assetData = new TreeMap<String, String>();
-        assetData.put("id", txId);
-
-        try {
-
-
-            //which transaction you want to fulfill?
-            FulFill fulfill = new FulFill();
-            fulfill.setOutputIndex(0);
-            fulfill.setTransactionId(txId);
-
-
-            //build and send TRANSFER transaction
-            Transaction transaction = BigchainDbTransactionBuilder
-                    .init()
-                    .addInput(null, fulfill, (EdDSAPublicKey) keys.getPublic())
-                    .addOutput("1", (EdDSAPublicKey) keys.getPublic())
-                    .addAssets(txId, String.class)
-                    .addMetaData(metaData)
-                    .operation(Operations.TRANSFER)
-                    .buildAndSign((EdDSAPublicKey) keys.getPublic(), (EdDSAPrivateKey) keys.getPrivate())
-                    .sendTransaction(handleServerResponse());
-
-            System.out.println("(*) TRANSFER Transaction sent.. - " + transaction.getId());
-
-
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-    }
 
     public static Map<String, String> createUser(final String firstName, final String lastName, final String email){
         Map<String, String> assetData = new TreeMap<String, String>() {{
