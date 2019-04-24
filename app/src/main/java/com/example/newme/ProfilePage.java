@@ -49,13 +49,13 @@ public class ProfilePage  extends AppCompatActivity {
             }
         });
 
-        settings_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent settingsIntent = new Intent(ProfilePage.this, SettingsPage.class);//FIX THIS AFTER SETTINGS DONE
-                ProfilePage.this.startActivity(settingsIntent); // startActivity allow you to move
-            }
-        });
+//        settings_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent settingsIntent = new Intent(ProfilePage.this, SettingsPage.class);//FIX THIS AFTER SETTINGS DONE
+//                ProfilePage.this.startActivity(settingsIntent); // startActivity allow you to move
+//            }
+//        });
 
         voucher_button.setOnClickListener(new View.OnClickListener() {
             @Override

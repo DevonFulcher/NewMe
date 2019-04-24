@@ -81,16 +81,16 @@ public class MakeAccount extends AppCompatActivity {
                 EditText e = (EditText) findViewById(R.id.email);  //email
                 EditText p = (EditText) findViewById(R.id.user_pin); //pin
                 EditText cPin = (EditText) findViewById(R.id.confirm_pin);
-                EditText secret = (EditText) findViewById(R.id.secret_text);
+                //EditText secret = (EditText) findViewById(R.id.secret_text);
 
                 String UFirst = first.getEditText().getText().toString();
                 String ULast = last.getEditText().getText().toString();
                 String UEmail = e.getText().toString();
                 String UPin = p.getText().toString();
                 String confirmPin = cPin.getText().toString();
-                String userSecret = secret.getText().toString();
+                //String userSecret = secret.getText().toString();
 
-                user = new User(UFirst, ULast, UEmail, UPin, confirmPin, userSecret);
+                user = new User(UFirst, ULast, UEmail, UPin, confirmPin);
 
 
                 Context context = getApplicationContext();

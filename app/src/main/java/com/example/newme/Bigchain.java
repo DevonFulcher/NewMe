@@ -29,7 +29,7 @@ public class Bigchain {
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "http://testnet.bigchaindb.com";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "35.211.78.232";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
 
     public Bigchain(GenericCallback callback){

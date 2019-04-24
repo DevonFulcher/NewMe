@@ -47,13 +47,37 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         //Need to return the result to pass it to TransactionActivity.
         qResult = result.getText();
         //MainActivity.resultTV.setText(result.getText());
-        try {
-            //Bigchain.sendTransaction(qResult);
-            this.send();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        onBackPressed();
+        Thread thread = new Thread(new Runnable(){
+
+            @Override
+            public void run() {
+
+                try {
+
+//                    bigchainDBApi.setConfig();
+//                    MongoClient mongo = Bigchain.connectToMongo();
+//                    MongoDatabase database = mongo.getDatabase("bigchain");
+//
+//                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
+//                    Document doc = new Document("voucher", "BigchainDB")
+//                            .append("voucher", qResult);
+//
+//                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
+//                    transactionDoc.insertOne(doc);
+
+                    Log.d("try","Transaction sent?");
+                    bigchainDBApi.sendTransaction(qResult);
+                    Log.d("WIN","Transaction sent?");
+                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
+                    startActivity(toProfile);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
     }
 
     @Override
