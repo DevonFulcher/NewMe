@@ -36,8 +36,9 @@ public class Bigchain {
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "35.211.78.232";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "http://35.211.78.232";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
+    private static MongoClient mongoClient;
 
     public Bigchain(GenericCallback callback){
 
@@ -60,7 +61,7 @@ public class Bigchain {
         Log.d(TAG, "Setting configuration..");
 
 
-        setConfig();
+        this.setConfig();
         Transaction transaction = null;
 
         //create asset data
@@ -86,6 +87,15 @@ public class Bigchain {
 
         return transaction;
 
+    }
+
+    public static MongoClient connectToMongo(){
+
+        mongoClient = (MongoClient) new MongoClientURI(bigchainDBNodeURL);
+        return mongoClient;
+        //http://mongodb.github.io/mongo-java-driver/3.10/javadoc/com/mongodb/client/MongoClients.html
+        //connect to mongoDB server and make function to add transactions/users
+        //need to check that connection happens...
     }
 
 
