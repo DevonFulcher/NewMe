@@ -1,81 +1,57 @@
 package com.example.newme;
 
-
 import android.util.Log;
 
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
 import com.bigchaindb.builders.BigchainDbTransactionBuilder;
 import com.bigchaindb.constants.Operations;
-import com.bigchaindb.model.FulFill;
 import com.bigchaindb.model.GenericCallback;
-import com.bigchaindb.model.MetaData;
 import com.bigchaindb.model.Transaction;
-
 
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import net.i2p.crypto.eddsa.KeyPairGenerator;
 
-import java.io.IOException;
-
 import java.security.KeyPair;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
-import okhttp3.Response;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-//import com.jcraft.jsch.ChannelShell;
-import com.mongodb.ServerAddress;
-import com.mongodb.MongoCredential;
-import com.mongodb.MongoClientOptions;
-import com.mongodb.client.MongoClients;
-
-import static com.bigchaindb.builders.BigchainDbConfigBuilder.baseUrl;
 
 /**
  * simple usage of BigchainDB Java driver (https://github.com/bigchaindb/java-bigchaindb-driver)
  * to create TXs on BigchainDB network
  * @author innoprenuer
  *
- * AsyncTask - https://developer.android.com/reference/android/os/AsyncTask.html
- * https://medium.com/@ankit.sinhal/understanding-of-asynctask-in-android-8fe61a96a238
- *
  */
-public class Bigchain{
-
+public class Bigchain {
 
     private static KeyPairGenerator edDsaKpg = new KeyPairGenerator();
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "35.211.78.232";
+    private static final String bigchainDBNodeURL = "http://testnet.bigchaindb.com";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
-    private static MongoClient mongoClient;
 
     public Bigchain(GenericCallback callback){
 
         this.callback = callback;
     }
 
-
+    /**
+     * configures connection url and credentials
+     */
     public static void setConfig() {
-
-
         BigchainDbConfigBuilder
-                .baseUrl("http://35.211.78.232")
-                .addToken("app_id","")
-                .addToken("app_key","").setup();
-
+                .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
+                .addToken("app_id", "")
+                .addToken("app_key", "").setup();
 
     }
 
-
-
     public Transaction sendTransaction(String data) throws Exception {
 
-        //Log.d(TAG, "Setting configuration..");
-        this.setConfig();
+        Log.d(TAG, "Setting configuration..");
+        setConfig();
         Transaction transaction = null;
 
         //create asset data
@@ -96,114 +72,14 @@ public class Bigchain{
                 .buildAndSign((EdDSAPublicKey) KEYS.getPublic(), (EdDSAPrivateKey) KEYS.getPrivate())
                 .sendTransaction(this.callback);
 
-        Log.d(TAG, "(*) Transaction registered.. - " + transaction.getId());
+        Log.d(TAG, "(*) Transaction successfully sent.. - " + transaction.getId());
 
 
         return transaction;
 
     }
 
-    public static MongoClient connectToMongo(){
 
-        mongoClient = new MongoClient(new MongoClientURI(bigchainDBNodeURL));
-        return mongoClient;
-        //http://mongodb.github.io/mongo-java-driver/3.10/javadoc/com/mongodb/client/MongoClients.html
-        //connect to mongoDB server and make function to add transactions/users
-        //need to check that connection happens...
-    }
-
-    public static String mongoTransaction(MongoClient MC){
-        MC.getDatabase("bigchain");
-        return "";
-    }
-
-
-
-    public String doCreate(Map<String, String> assetData, MetaData metaData, KeyPair keys) throws Exception {
-
-        try {
-            //build and send CREATE transaction
-            Transaction transaction = null;
-
-            transaction = BigchainDbTransactionBuilder
-                    .init()
-                    .addAssets(assetData, TreeMap.class)
-                    .addMetaData(metaData)
-                    .operation(Operations.CREATE)
-                    .buildAndSign((EdDSAPublicKey) keys.getPublic(), (EdDSAPrivateKey) keys.getPrivate())
-                    .sendTransaction(this.handleServerResponse());
-
-            System.out.println("(*) CREATE Transaction sent.. - " + transaction.getId());
-            return transaction.getId();
-
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public static KeyPair getKeys() {
-        //  prepare your keys
-        net.i2p.crypto.eddsa.KeyPairGenerator edDsaKpg = new net.i2p.crypto.eddsa.KeyPairGenerator();
-        KeyPair keyPair = edDsaKpg.generateKeyPair();
-        System.out.println("(*) Keys Generated..");
-        return keyPair;
-
-    }
-
-
-
-
-
-    public static Map<String, String> createUser(final String firstName, final String lastName, final String email){
-        Map<String, String> assetData = new TreeMap<String, String>() {{
-            put("User First Name", firstName);
-            put("Last Name", lastName);
-            put("email", email);
-            put("purpose", "Creating User");
-        }};
-        return assetData;
-    }
-
-
-
-    private void onSuccess(Response response) {
-        //TODO : Add your logic here with response from server
-        System.out.println("Transaction posted successfully");
-    }
-
-    private void onFailure() {
-        //TODO : Add your logic here
-        System.out.println("Transaction failed");
-    }
-
-    private GenericCallback handleServerResponse() {
-        //define callback methods to verify response from BigchainDBServer
-        GenericCallback callback = new GenericCallback() {
-
-            @Override
-            public void transactionMalformed(Response response) {
-                System.out.println("malformed " + response.message());
-                onFailure();
-            }
-
-            @Override
-            public void pushedSuccessfully(Response response) {
-                System.out.println("pushedSuccessfully");
-                onSuccess(response);
-            }
-
-            @Override
-            public void otherError(Response response) {
-                System.out.println("otherError" + response.message());
-                onFailure();
-            }
-        };
-
-        return callback;
-    }
 
 
 }
