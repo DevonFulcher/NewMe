@@ -5,17 +5,24 @@ import android.util.Log;
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
 import com.bigchaindb.builders.BigchainDbTransactionBuilder;
 import com.bigchaindb.constants.Operations;
+import com.bigchaindb.model.FulFill;
 import com.bigchaindb.model.GenericCallback;
+import com.bigchaindb.model.MetaData;
 import com.bigchaindb.model.Transaction;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoClient;
 
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
 import net.i2p.crypto.eddsa.KeyPairGenerator;
 
+import java.io.IOException;
 import java.security.KeyPair;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
+
+import okhttp3.Response;
 
 /**
  * simple usage of BigchainDB Java driver (https://github.com/bigchaindb/java-bigchaindb-driver)
@@ -51,6 +58,7 @@ public class Bigchain {
     public Transaction sendTransaction(String data) throws Exception {
 
         Log.d(TAG, "Setting configuration..");
+
         setConfig();
         Transaction transaction = null;
 
