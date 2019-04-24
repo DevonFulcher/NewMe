@@ -59,6 +59,7 @@ public class Bigchain {
 
         Log.d(TAG, "Setting configuration..");
 
+
         setConfig();
         Transaction transaction = null;
 
