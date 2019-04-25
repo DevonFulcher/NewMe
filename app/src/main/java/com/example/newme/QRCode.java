@@ -1,7 +1,6 @@
 package com.example.newme;
 
 import android.Manifest;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -9,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.bigchaindb.constants.BigchainDbApi;
 import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.content.Intent;
 import com.bigchaindb.model.GenericCallback;
@@ -23,117 +25,34 @@ import com.google.gson.JsonParser;
 import okhttp3.Response;
 
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.ServerAddress;
-import com.mongodb.MongoCredential;
-import com.mongodb.MongoClientOptions;
-import com.mongodb.client.ClientSession;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
-import org.bson.Document;
-
-import static com.example.newme.Bigchain.connectToMongo;
-
-
-public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler{
-
-
-    /**
-     * TODO: research sending transactions.
-     * After scanning QRCode the app crashes.
-     *
-     * Research found here:
-     *  BigchainDB Java Driver - https://github.com/bigchaindb/java-bigchaindb-driver
-     *
-     * Transaction example - https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
-     *      Probably need to move away from boiler plate code and try to implement the transaction example more closely.
-     *
-     * Boiler plate- https://github.com/bigchaindb/android-boilerplate
-     *
-     * One of the errors being thrown:
-     * https://www.slf4j.org/codes.html#StaticLoggerBinder
-     *
-     *
-     */
-    static Result qResult = null;
+public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+    static String qResult = null;
     private static final String TAG = "TransactionActivity";
     private static final int REQUEST_SIGNUP = 0;
-    public Bigchain bigchainDBApi = new Bigchain(this.handleServerResponse());
-
-    //SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA",0);
-    User user = MakeAccount.user;
-    //TODO use model.transactions
+    Bigchain bigchainDBApi = new Bigchain(handleServerResponse());
     int SUCCESS_CODE = 1;
     ZXingScannerView scannerView;
     static int PReqCode = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         checkAndRequestPermission();
         super.onCreate(savedInstanceState);
         scannerView = new ZXingScannerView(this);
-
         setContentView(scannerView);
     }
 
     @Override
-    public void handleResult(final Result result) {
-        //does handleResult get called when scannerview is set?
-
-
-
-//      new Thread new Runnable code found here: https://developer.android.com/guide/components/processes-and-threads
-        //FROM: https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
-//        bigchainDBApi.setConfig();
-        //new Thread(new Runnable() {
-        //TODO: need to override strict mode!!!
-        Thread thread = new Thread(new Runnable(){
-
-            @Override
-            public void run() {
-
-                try {
-
-//                    bigchainDBApi.setConfig();
-//                    MongoClient mongo = Bigchain.connectToMongo();
-//                    MongoDatabase database = mongo.getDatabase("bigchain");
-//
-//                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
-//                    Document doc = new Document("voucher", "BigchainDB")
-//                            .append("voucher", qResult);
-//
-//                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
-//                    transactionDoc.insertOne(doc);
-
-                    Log.d("try","Transaction sent?");
-
-                    qResult = result;
-                    bigchainDBApi.sendTransaction(qResult.getText());
-                    Log.d("WIN","Transaction sent?");
-                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
-                    startActivity(toProfile);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        thread.start();
-
-
-//                            Log.d("try","Transaction sent?");
-//                            //TODO: Have a class for available funds...
-//                            //TODO: send transaction should actually be a transfer
-
-
-
-        MainActivity.resultTV.setText(result.getText());
-        //String[] oneItem = {qResult}; //doInBackground takes a list of strings as input?
-
+    public void handleResult(Result result) {
+        //Need to return the result to pass it to TransactionActivity.
+        qResult = result.getText();
+        //MainActivity.resultTV.setText(result.getText());
+        try {
+            //Bigchain.sendTransaction(qResult);
+            this.send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         onBackPressed();
     }
 
@@ -164,6 +83,67 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         }
     }
 
+    public void send() throws Exception {
+        //Bigchain thisBigChain = new com.example.newme.Bigchain();
+//        Transaction newTransaction = null;
+        Log.d(TAG, "Sending Transaction");
+
+        if (!validate()) {
+            onSendFailed();
+            return;
+        }
+
+        //get string from Daniel's QR code
+        Transaction sentTx = null;
+        if(QRCode.qResult.equals(null)){
+            Log.d("oof", "NUll QRCODE");
+        }else{
+            //sentTx = thisBigChain.sendTransaction(QRCode.qResult);
+            //newTransaction = thisBigChain.sendTransaction(QRCode.qResult);
+            bigchainDBApi.sendTransaction(QRCode.qResult);
+            Log.d(TAG, sentTx.toString());
+        }
+        bigchainDBApi.sendTransaction(QRCode.qResult);
+
+//        Transaction sentText = thisBigChain.sendTransaction(QRCode.qResult);
+//        bigchainDBApi.sendTransaction(sentText);
+
+//        Transaction sentTx = null;
+//        try{
+//            sentTx = bigchainDBApi.sendTransaction(QRCode.this.qResult);
+//        } catch (ConnectException ex){
+//            //set error code
+//            SUCCESS_CODE = -2;
+//        } catch (Exception e){
+//            //set error code
+//            SUCCESS_CODE = -3;
+//        }
+
+//        Log.d(TAG, sentTx.toString()); logging sentText
+//        final Transaction tx = sentTx;
+//        new android.os.Handler().postDelayed(
+//                new Runnable() {
+//                    public void run() {
+//                        Log.d(TAG, "Success code - " + SUCCESS_CODE);
+//                        while(SUCCESS_CODE == 1){
+//                            try {
+//                                Thread.sleep(500);
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
+//                            Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
+//                        }
+//                        if(SUCCESS_CODE == 0){
+//                            //onSendSuccess(tx);
+//                        }
+//                        else {
+//                            onSendFailed();
+//                        }
+//
+//                        //progressDialog.dismiss();
+//                    }
+//                }, 3000);
+    }
 
 
     @Override
@@ -178,7 +158,9 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     public void onBackPressed() {
         // Disable going back to the MainActivity
-        moveTaskToBack(true);
+        //moveTaskToBack(true);
+        scannerView.stopCamera();
+        this.finish();
     }
 
     public void onSendSuccess(Transaction successfulTx) {
