@@ -56,12 +56,12 @@ public class Bigchain {
 
     }
 
-    public Transaction sendTransaction(String data) throws Exception {
+    public static Transaction sendTransaction(String data) throws Exception {
 
         Log.d(TAG, "Setting configuration..");
 
 
-        this.setConfig();
+        setConfig();
         Transaction transaction = null;
 
         //create asset data
@@ -80,7 +80,8 @@ public class Bigchain {
                 .addMetaData(metadata)
                 .operation(Operations.CREATE)
                 .buildAndSign((EdDSAPublicKey) KEYS.getPublic(), (EdDSAPrivateKey) KEYS.getPrivate())
-                .sendTransaction(this.callback);
+                .sendTransaction();
+
 
         Log.d(TAG, "(*) Transaction successfully sent.. - " + transaction.getId());
 

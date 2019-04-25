@@ -34,7 +34,7 @@ import org.json.JSONObject;
 
 
 public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler {
-    static String qResult = null;
+    static Result qResult = null;
     private static final String TAG = "TransactionActivity";
     private static final int REQUEST_SIGNUP = 0;
     Bigchain bigchainDBApi = new Bigchain(handleServerResponse());
@@ -51,6 +51,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
     @Override
     public void handleResult(Result result) {
+        qResult = result;
         //Need to return the result to pass it to TransactionActivity.
         final JSONObject jo = new JSONObject();
         try {
@@ -86,7 +87,8 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                     //TODO: send transaction should actually be a transfer
                     Transaction logTransaction = null;
 
-                    bigchainDBApi.sendTransaction("some");
+                    String cooper = "coopre";
+                    bigchainDBApi.sendTransaction(cooper);
                     //Log.d("Check Transact",logTransaction.toString());
 
                     Log.d("WIN","Transaction sent?");
@@ -129,67 +131,67 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         }
     }
 
-    public void send() throws Exception {
-        //Bigchain thisBigChain = new com.example.newme.Bigchain();
-//        Transaction newTransaction = null;
-        Log.d(TAG, "Sending Transaction");
-
-        if (!validate()) {
-            onSendFailed();
-            return;
-        }
-
-        //get string from Daniel's QR code
-        Transaction sentTx = null;
-        if(QRCode.qResult.equals(null)){
-            Log.d("oof", "NUll QRCODE");
-        }else{
-            //sentTx = thisBigChain.sendTransaction(QRCode.qResult);
-            //newTransaction = thisBigChain.sendTransaction(QRCode.qResult);
-            bigchainDBApi.sendTransaction(QRCode.qResult);
-            Log.d(TAG, sentTx.toString());
-        }
-        bigchainDBApi.sendTransaction(QRCode.qResult);
-
-//        Transaction sentText = thisBigChain.sendTransaction(QRCode.qResult);
-//        bigchainDBApi.sendTransaction(sentText);
-
-//        Transaction sentTx = null;
-//        try{
-//            sentTx = bigchainDBApi.sendTransaction(QRCode.this.qResult);
-//        } catch (ConnectException ex){
-//            //set error code
-//            SUCCESS_CODE = -2;
-//        } catch (Exception e){
-//            //set error code
-//            SUCCESS_CODE = -3;
-//        }
-
-//        Log.d(TAG, sentTx.toString()); logging sentText
-//        final Transaction tx = sentTx;
-//        new android.os.Handler().postDelayed(
-//                new Runnable() {
-//                    public void run() {
-//                        Log.d(TAG, "Success code - " + SUCCESS_CODE);
-//                        while(SUCCESS_CODE == 1){
-//                            try {
-//                                Thread.sleep(500);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//                            Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
-//                        }
-//                        if(SUCCESS_CODE == 0){
-//                            //onSendSuccess(tx);
-//                        }
-//                        else {
-//                            onSendFailed();
-//                        }
+//    public void send() throws Exception {
+//        //Bigchain thisBigChain = new com.example.newme.Bigchain();
+////        Transaction newTransaction = null;
+//        Log.d(TAG, "Sending Transaction");
 //
-//                        //progressDialog.dismiss();
-//                    }
-//                }, 3000);
-    }
+//        if (!validate()) {
+//            onSendFailed();
+//            return;
+//        }
+//
+//        //get string from Daniel's QR code
+//        Transaction sentTx = null;
+//        if(QRCode.qResult.equals(null)){
+//            Log.d("oof", "NUll QRCODE");
+//        }else{
+//            //sentTx = thisBigChain.sendTransaction(QRCode.qResult);
+//            //newTransaction = thisBigChain.sendTransaction(QRCode.qResult);
+//            bigchainDBApi.sendTransaction(QRCode.qResult);
+//            Log.d(TAG, sentTx.toString());
+//        }
+//        bigchainDBApi.sendTransaction(QRCode.qResult);
+//
+////        Transaction sentText = thisBigChain.sendTransaction(QRCode.qResult);
+////        bigchainDBApi.sendTransaction(sentText);
+//
+////        Transaction sentTx = null;
+////        try{
+////            sentTx = bigchainDBApi.sendTransaction(QRCode.this.qResult);
+////        } catch (ConnectException ex){
+////            //set error code
+////            SUCCESS_CODE = -2;
+////        } catch (Exception e){
+////            //set error code
+////            SUCCESS_CODE = -3;
+////        }
+//
+////        Log.d(TAG, sentTx.toString()); logging sentText
+////        final Transaction tx = sentTx;
+////        new android.os.Handler().postDelayed(
+////                new Runnable() {
+////                    public void run() {
+////                        Log.d(TAG, "Success code - " + SUCCESS_CODE);
+////                        while(SUCCESS_CODE == 1){
+////                            try {
+////                                Thread.sleep(500);
+////                            } catch (InterruptedException e) {
+////                                e.printStackTrace();
+////                            }
+////                            Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
+////                        }
+////                        if(SUCCESS_CODE == 0){
+////                            //onSendSuccess(tx);
+////                        }
+////                        else {
+////                            onSendFailed();
+////                        }
+////
+////                        //progressDialog.dismiss();
+////                    }
+////                }, 3000);
+//    }
 
 
     @Override
