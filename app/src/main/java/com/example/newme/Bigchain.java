@@ -50,7 +50,7 @@ public class Bigchain {
      */
     public static void setConfig() {
         BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
+                .baseUrl("http://testnet.bigchaindb.com") //or use http://testnet.bigchaindb.com
                 .addToken("app_id", "")
                 .addToken("app_key", "").setup();
 
