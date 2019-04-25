@@ -70,15 +70,15 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                 try {
 
 
-//                    MongoClient mongo = Bigchain.connectToMongo();
-//                    MongoDatabase database = mongo.getDatabase("bigchain");
-//
-//                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
-//                    Document doc = new Document("voucher", "BigchainDB")
-//                            .append("voucher", qResult);
-//
-//                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
-//                    transactionDoc.insertOne(doc);
+                    MongoClient mongo = Bigchain.connectToMongo();
+                    MongoDatabase database = mongo.getDatabase("bigchain");
+
+                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
+                    Document doc = new Document("voucher", "BigchainDB")
+                            .append("voucher", qResult);
+
+                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
+                    transactionDoc.insertOne(doc);
 
                     //Log.d("qResult",qResult);
 
@@ -86,7 +86,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                     //TODO: send transaction should actually be a transfer
                     Transaction logTransaction = null;
 
-                    bigchainDBApi.sendTransaction(jo.toString());
+                    //bigchainDBApi.sendTransaction(jo.toString());
                     //Log.d("Check Transact",logTransaction.toString());
 
                     Log.d("WIN","Transaction sent?");
