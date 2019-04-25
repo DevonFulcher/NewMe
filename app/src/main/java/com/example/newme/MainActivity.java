@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         Name = (TextView)findViewById(R.id.Name);
+        //this pulls the correct information to the Name on the profile page
         Email= (TextView)findViewById(R.id.Email);
+        //this pulls the correct information to the Email on the profile page
         resultTV = (TextView)findViewById(R.id.tvResult);
         scanButton = (Button)findViewById(R.id.btnQRStart);
         loginButton = (Button)findViewById(R.id.login_button);
