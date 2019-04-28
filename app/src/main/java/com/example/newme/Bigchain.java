@@ -26,8 +26,8 @@ import okhttp3.Response;
 
 /**
  * simple usage of BigchainDB Java driver (https://github.com/bigchaindb/java-bigchaindb-driver)
- * to create TXs on BigchainDB network
- * @author innoprenuer
+ * from @author innoprenuer
+ * https://github.com/bigchaindb/android-boilerplate
  *
  */
 public class Bigchain {
@@ -50,18 +50,18 @@ public class Bigchain {
      */
     public static void setConfig() {
         BigchainDbConfigBuilder
-                .baseUrl("http://testnet.bigchaindb.com").setup(); //or use http://testnet.bigchaindb.com
-                //.addToken("app_id", "")
-                //.addToken("app_key", "").setup();
+                .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
+                .addToken("app_id", "")
+                .addToken("app_key", "").setup();
 
     }
 
-    public static Transaction sendTransaction(String data) throws Exception {
+    public Transaction sendTransaction(String data) throws Exception {
 
         Log.d(TAG, "Setting configuration..");
 
 
-        setConfig();
+        this.setConfig();
         Transaction transaction = null;
 
         //create asset data

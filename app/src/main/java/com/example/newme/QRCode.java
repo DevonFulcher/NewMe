@@ -50,6 +50,9 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     }
 
     @Override
+    /**
+     * Handle result is called to handle the result of starting the camera.
+     */
     public void handleResult(Result result) {
         qResult = result;
         //Need to return the result to pass it to TransactionActivity.
@@ -60,6 +63,14 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
             e.printStackTrace();
         }
 
+        /**
+         * In order to access the internet a new thread needs to be spun off the main thread.
+         * Async task can also be used, but it has to extend the class.
+         * new android.os.Handler().postDelayed() also works, used in the android boilerplate code example found here: https://github.com/bigchaindb/android-boilerplate
+         *
+         * MongoDB could be used to access the DB directly and register transactions that way. Connection issues so trying bigcahin Transactions as well.
+         */
+
         Thread thread = new Thread(new Runnable(){
 
 
@@ -67,7 +78,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
             @Override
             public void run() {
                 //Log.d("in run",jo.toString());
-
+                Transaction sentTx = null;
                 try {
 
 
@@ -83,13 +94,10 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
                     //Log.d("qResult",qResult);
 
-                    //TODO: Have a class for available funds...
-                    //TODO: send transaction should actually be a transfer
                     Transaction logTransaction = null;
 
-                    String cooper = "coopre";
-                    bigchainDBApi.sendTransaction(cooper);
-                    //Log.d("Check Transact",logTransaction.toString());
+                    sentTx = bigchainDBApi.sendTransaction(qResult.toString());
+                    Log.d("Check Transact",sentTx.toString());
 
                     Log.d("WIN","Transaction sent?");
                     Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
@@ -131,67 +139,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         }
     }
 
-//    public void send() throws Exception {
-//        //Bigchain thisBigChain = new com.example.newme.Bigchain();
-////        Transaction newTransaction = null;
-//        Log.d(TAG, "Sending Transaction");
-//
-//        if (!validate()) {
-//            onSendFailed();
-//            return;
-//        }
-//
-//        //get string from Daniel's QR code
-//        Transaction sentTx = null;
-//        if(QRCode.qResult.equals(null)){
-//            Log.d("oof", "NUll QRCODE");
-//        }else{
-//            //sentTx = thisBigChain.sendTransaction(QRCode.qResult);
-//            //newTransaction = thisBigChain.sendTransaction(QRCode.qResult);
-//            bigchainDBApi.sendTransaction(QRCode.qResult);
-//            Log.d(TAG, sentTx.toString());
-//        }
-//        bigchainDBApi.sendTransaction(QRCode.qResult);
-//
-////        Transaction sentText = thisBigChain.sendTransaction(QRCode.qResult);
-////        bigchainDBApi.sendTransaction(sentText);
-//
-////        Transaction sentTx = null;
-////        try{
-////            sentTx = bigchainDBApi.sendTransaction(QRCode.this.qResult);
-////        } catch (ConnectException ex){
-////            //set error code
-////            SUCCESS_CODE = -2;
-////        } catch (Exception e){
-////            //set error code
-////            SUCCESS_CODE = -3;
-////        }
-//
-////        Log.d(TAG, sentTx.toString()); logging sentText
-////        final Transaction tx = sentTx;
-////        new android.os.Handler().postDelayed(
-////                new Runnable() {
-////                    public void run() {
-////                        Log.d(TAG, "Success code - " + SUCCESS_CODE);
-////                        while(SUCCESS_CODE == 1){
-////                            try {
-////                                Thread.sleep(500);
-////                            } catch (InterruptedException e) {
-////                                e.printStackTrace();
-////                            }
-////                            Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
-////                        }
-////                        if(SUCCESS_CODE == 0){
-////                            //onSendSuccess(tx);
-////                        }
-////                        else {
-////                            onSendFailed();
-////                        }
-////
-////                        //progressDialog.dismiss();
-////                    }
-////                }, 3000);
-//    }
+
 
 
     @Override
@@ -211,52 +159,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         this.finish();
     }
 
-    public void onSendSuccess(Transaction successfulTx) {
-        //_txButton.setEnabled(true);
 
-        Toast.makeText(getBaseContext(), "Transaction successful", Toast.LENGTH_LONG).show();
-        JsonObject jsonObject = new JsonParser().parse(successfulTx.toString()).getAsJsonObject();
-        //_txRespText.setText(toPrettyFormat(jsonObject.toString()));
-        //set success code to intial state
-        SUCCESS_CODE = 1;
-    }
-
-    public void onSendFailed() {
-        Log.d(TAG, "Transaction failed. Success code - " + SUCCESS_CODE);
-        String msg = "";
-        if(SUCCESS_CODE == -2){
-            msg = "Couldn't connect to BigchainDB";
-            SUCCESS_CODE = 1;
-        }
-        else if(SUCCESS_CODE == -3){
-            msg = "Some error occurred. Exiting";
-        }
-        else {
-            msg ="Transaction Failed";
-            SUCCESS_CODE = 1;
-        }
-
-
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String tx = "Code from scanning QR label";
-        if(tx.equals(null)){
-            Log.d("Error", "set an error here");
-            valid = false;
-        }
-//            if (tx.isEmpty()) {
-//            _txText.setError("type a message to send");
-//            valid = false;
-//        } else {
-//            _txText.setError(null);
-//        }
-
-        return valid;
-
-    }
 
     private GenericCallback handleServerResponse() {
         //define callback methods to verify response from BigchainDBServer
