@@ -50,9 +50,9 @@ public class Bigchain {
      */
     public static void setConfig() {
         BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
-                .addToken("app_id", "")
-                .addToken("app_key", "").setup();
+                .baseUrl("https://testnet.bigchaindb.com").setup(); //or use http://testnet.bigchaindb.com
+                //.addToken("app_id", "")
+                //.addToken("app_key", "").setup();
 
     }
 
@@ -90,14 +90,116 @@ public class Bigchain {
 
     }
 
-    public static MongoClient connectToMongo(){
+    public String doCreate(Map<String, String> assetData, MetaData metaData, KeyPair keys) throws Exception {
 
-        mongoClient = (MongoClient) new MongoClientURI(bigchainDBNodeURL);
-        return mongoClient;
-        //http://mongodb.github.io/mongo-java-driver/3.10/javadoc/com/mongodb/client/MongoClients.html
-        //connect to mongoDB server and make function to add transactions/users
-        //need to check that connection happens...
+        try {
+            //build and send CREATE transaction
+            Transaction transaction = null;
+
+            transaction = BigchainDbTransactionBuilder
+                    .init()
+                    .addAssets(assetData, TreeMap.class)
+                    .addMetaData(metaData)
+                    .operation(Operations.CREATE)
+                    .buildAndSign((EdDSAPublicKey) keys.getPublic(), (EdDSAPrivateKey) keys.getPrivate())
+                    .sendTransaction(handleServerResponse());
+
+            System.out.println("(*) CREATE Transaction sent.. - " + transaction.getId());
+            return transaction.getId();
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
     }
+
+    public void doTransfer(String txId, MetaData metaData, KeyPair keys) throws Exception {
+
+        Map<String, String> assetData = new TreeMap<String, String>();
+        assetData.put("id", txId);
+
+        try {
+
+
+            //which transaction you want to fulfill?
+            FulFill fulfill = new FulFill();
+            fulfill.setOutputIndex(0);
+            fulfill.setTransactionId(txId);
+
+
+            //build and send TRANSFER transaction
+            Transaction transaction = BigchainDbTransactionBuilder
+                    .init()
+                    .addInput(null, fulfill, (EdDSAPublicKey) keys.getPublic())
+                    .addOutput("1", (EdDSAPublicKey) keys.getPublic())
+                    .addAssets(txId, String.class)
+                    .addMetaData(metaData)
+                    .operation(Operations.TRANSFER)
+                    .buildAndSign((EdDSAPublicKey) keys.getPublic(), (EdDSAPrivateKey) keys.getPrivate())
+                    .sendTransaction(handleServerResponse());
+
+            System.out.println("(*) TRANSFER Transaction sent.. - " + transaction.getId());
+
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+    private GenericCallback handleServerResponse() {
+        //define callback methods to verify response from BigchainDBServer
+        GenericCallback callback = new GenericCallback() {
+
+            @Override
+            public void transactionMalformed(Response response) {
+                System.out.println("malformed " + response.message());
+                onFailure();
+            }
+
+            @Override
+            public void pushedSuccessfully(Response response) {
+                System.out.println("pushedSuccessfully");
+                onSuccess(response);
+            }
+
+            @Override
+            public void otherError(Response response) {
+                System.out.println("otherError" + response.message());
+                onFailure();
+            }
+        };
+
+        return callback;
+    }
+
+    private void onSuccess(Response response) {
+        //TODO : Add your logic here with response from server
+        System.out.println("Transaction posted successfully");
+    }
+
+    private void onFailure() {
+        //TODO : Add your logic here
+        System.out.println("Transaction failed");
+    }
+
+    public static KeyPair getKeys() {
+        //  prepare your keys
+        net.i2p.crypto.eddsa.KeyPairGenerator edDsaKpg = new net.i2p.crypto.eddsa.KeyPairGenerator();
+        KeyPair keyPair = edDsaKpg.generateKeyPair();
+        System.out.println("(*) Keys Generated..");
+        return keyPair;
+
+    }
+
+
 
 
 

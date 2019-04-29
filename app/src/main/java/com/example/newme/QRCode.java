@@ -1,6 +1,7 @@
 package com.example.newme;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.bigchaindb.constants.BigchainDbApi;
+import com.bigchaindb.model.MetaData;
 import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import android.app.ProgressDialog;
@@ -30,7 +32,9 @@ import okhttp3.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+import java.security.KeyPair;
+import java.util.Map;
+import java.util.TreeMap;
 
 
 public class QRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler {
@@ -41,6 +45,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     int SUCCESS_CODE = 1;
     ZXingScannerView scannerView;
     static int PReqCode = 1;
+    //SharedPreferences saveData = this.getSharedPreferences("com.example.newme.USER_DATA", 0);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         checkAndRequestPermission();
@@ -71,45 +76,43 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
          * MongoDB could be used to access the DB directly and register transactions that way. Connection issues so trying bigcahin Transactions as well.
          */
 
-        Thread thread = new Thread(new Runnable(){
+        //Thread thread = new Thread(new Runnable(){
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Transaction sentTx = null;
+                        try {
+                            //create a transaction
+                            bigchainDBApi.setConfig();
+                            KeyPair keys = bigchainDBApi.getKeys();
+
+                            Map<String, String> assetData = new TreeMap<String, String>() {{
+                                put("firstname", "Cooper");
+                                put("lastname", "Opal");
+                                put("purpose", "saving the world");
+                            }};
+
+                            MetaData metaData = new MetaData();
+                            metaData.setMetaData("where is he now?", "Thailand");
+                            String transID = bigchainDBApi.doCreate(assetData,metaData,keys);
+
+                            //transfer data
+
+                            MetaData transferMetadata = new MetaData();
+                            transferMetadata.setMetaData("where is he now?", "Japan");
+
+                            Thread.sleep(5000);
+
+                            bigchainDBApi.doTransfer(transID,transferMetadata,keys);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },3000);
 
 
-
-            @Override
-            public void run() {
-                //Log.d("in run",jo.toString());
-                Transaction sentTx = null;
-                try {
-
-
-//                    MongoClient mongo = Bigchain.connectToMongo();
-//                    MongoDatabase database = mongo.getDatabase("bigchain");
-//
-//                    //http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
-//                    Document doc = new Document("voucher", "BigchainDB")
-//                            .append("voucher", qResult);
-//
-//                    MongoCollection<Document> transactionDoc = database.getCollection("transactions");
-//                    transactionDoc.insertOne(doc);
-
-                    //Log.d("qResult",qResult);
-
-                    Transaction logTransaction = null;
-
-                    sentTx = bigchainDBApi.sendTransaction(qResult.toString());
-                    Log.d("Check Transact",sentTx.toString());
-
-                    Log.d("WIN","Transaction sent?");
-                    Intent toProfile = new Intent(QRCode.this,ProfilePage.class);
-                    startActivity(toProfile);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        thread.start();
     }
 
     @Override
