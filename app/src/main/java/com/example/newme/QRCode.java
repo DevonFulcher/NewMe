@@ -76,41 +76,45 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
          * MongoDB could be used to access the DB directly and register transactions that way. Connection issues so trying bigcahin Transactions as well.
          */
 
-        //Thread thread = new Thread(new Runnable(){
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        Transaction sentTx = null;
-                        try {
-                            //create a transaction
-                            bigchainDBApi.setConfig();
-                            KeyPair keys = bigchainDBApi.getKeys();
+        Thread thread = new Thread(new Runnable() {
+            //new android.os.Handler().postDelayed(
+            //new Runnable() {
+            @Override
+            public void run() {
+                Transaction sentTx = null;
+                try {
+                    //create a transaction
+                    bigchainDBApi.setConfig();
+                    KeyPair keys = bigchainDBApi.getKeys();
 
-                            Map<String, String> assetData = new TreeMap<String, String>() {{
-                                put("firstname", "Cooper");
-                                put("lastname", "Opal");
-                                put("purpose", "saving the world");
-                            }};
+                    Map<String, String> assetData = new TreeMap<String, String>() {{
+                        put("firstname", qResult.getText());
+                        put("lastname", "Opal");
+                        put("purpose", "saving the world");
+                    }};
 
-                            MetaData metaData = new MetaData();
-                            metaData.setMetaData("where is he now?", "Thailand");
-                            String transID = bigchainDBApi.doCreate(assetData,metaData,keys);
+                    MetaData metaData = new MetaData();
+                    metaData.setMetaData("where is he now?", "Thailand");
+                    String transID = bigchainDBApi.doCreate(assetData, metaData, keys);
 
-                            //transfer data
+                    //transfer data
 
-                            MetaData transferMetadata = new MetaData();
-                            transferMetadata.setMetaData("where is he now?", "Japan");
+                    MetaData transferMetadata = new MetaData();
+                    transferMetadata.setMetaData("where is he now?", "Japan");
 
-                            Thread.sleep(5000);
+                    Thread.sleep(5000);
 
-                            bigchainDBApi.doTransfer(transID,transferMetadata,keys);
+                    bigchainDBApi.doTransfer(transID, transferMetadata, keys);
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },3000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        //thread.stop();
+
+
 
 
     }
