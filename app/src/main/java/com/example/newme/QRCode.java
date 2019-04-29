@@ -106,6 +106,8 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
                     bigchainDBApi.doTransfer(transID, transferMetadata, keys);
 
+                    Intent intent = new Intent(QRCode.this,ProfilePage.class);
+                    QRCode.this.startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
