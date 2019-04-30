@@ -141,20 +141,24 @@ public class MakeAccount extends AppCompatActivity {
 
 
                 /**
-                Everything in bigchain is an asset, so you can treat creating a user like creating an asset
+                Everything in bigchain is an asset, so you can treat creating a user like creating any other transaction
                  */
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         Transaction sentTx = null;
                         try {
-                            //create a transaction
                             bigchainDBApi.setConfig();
+                            AccountApi acctApi = new AccountApi();
+                            Account usersAccount = new Account();
+                            usersAccount = acctApi.createAccount();
+                            //create a transaction
+
                             KeyPair keys = bigchainDBApi.getKeys();
 
+                            Account finalUsersAccount = usersAccount;
                             Map<String, String> assetData = new TreeMap<String, String>() {{
-                                put("firstname", UFirst);
-                                put("lastname", ULast);
+                                put("PublicKey", finalUsersAccount.getPublicKey().toString());
                                 put("purpose", "saving the world");
                             }};
 
