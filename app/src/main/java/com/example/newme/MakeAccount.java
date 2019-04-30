@@ -70,6 +70,8 @@ public class MakeAccount extends AppCompatActivity {
                     userDataEditor.putString("LastName",user.getLastName());
                     userDataEditor.putString("Email",user.getEmail());
                     userDataEditor.putString("Pin",user.getPin());
+                    userDataEditor.putString("HomeAddress", "");
+                    userDataEditor.putString("PhoneNumber", "");
                     userDataEditor.apply();
                     //commmit to file ^^^^
                     Intent intent = new Intent(MakeAccount.this, ProfilePage.class);

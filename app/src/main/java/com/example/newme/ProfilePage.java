@@ -52,8 +52,8 @@ public class ProfilePage  extends AppCompatActivity {
         settings_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent qrIntent = new Intent(ProfilePage.this, MakeAccount.class);//FIX THIS AFTER SETTINGS DONE
-                ProfilePage.this.startActivity(qrIntent); // startActivity allow you to move
+                Intent settingsIntent = new Intent(ProfilePage.this, SettingsPage.class);//FIX THIS AFTER SETTINGS DONE
+                ProfilePage.this.startActivity(settingsIntent); // startActivity allow you to move
             }
         });
 
@@ -65,12 +65,6 @@ public class ProfilePage  extends AppCompatActivity {
             }
         });
 
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent profileIntent = new Intent(ProfilePage.this,ProfilePage.class);
-                ProfilePage.this.startActivity(profileIntent);
-            }
-        });
+
     }
 }

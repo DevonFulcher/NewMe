@@ -15,6 +15,10 @@
 
 
         <activity android:name=".QRCode" />
+        <activity android:name=".SettingsPage"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".DeleteAccount"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"

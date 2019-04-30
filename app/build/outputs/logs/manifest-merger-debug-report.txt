@@ -1,0 +1,323 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\8469802d291082adf20871a5adff5d62\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:design:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\17f21880791ebd2d1018caba6f6f12d2\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\8b30273707ac5c4f88279a10340d6233\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\95381df8d590d551fca08c7bc48cd59a\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:17:1-39:12
+MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\b6faa74d4f281fc57dc2278dbff1bcdb\AndroidManifest.xml:2:1-13:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\31386a26ce384443fd18bdddb8640a1c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-16.0.0.aar\4c93119270d83277114f0ea3eb124f8a\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-16.0.0.aar\4642a5dc3b670bdc7026d9ffca25bb09\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\3286f36a3be7c04da79902f48d8225b8\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:17:1-28:12
+MERGED from [me.dm7.barcodescanner:core:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\core-1.9.aar\ed309fdae1744690a49f164654e8e67c\AndroidManifest.xml:2:1-13:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\5f863b631dbecbe5ecba41047e635ec1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\8919c4b511685a6e2d037a68d6b94cea\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\7fa7f19d98a0aa560a2bef3b182d673a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\e281860b458e5084736053e35a9c1029\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\76c76ba204972cb8a66808676f60cd05\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\dbf6521fda66128f61e1d2d2d0bdbaf3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\ee038d5f178684293e12fdce6dddbf42\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\b057312ce239f782e9dc2cc5cde12c64\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\3e404eceeaff81c1de321925b46fe817\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\72ac99e383b8ae4cf888f0fcab5ee178\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\2c1ea6cee6c2b94c27da392537dabd03\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\bbc653819ed9ee7dfcb11853363bfdf1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\b6fde9d146a331b1b5313750252bb038\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\ce2e299e21520d3a25b185fbd12d96de\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\37064165c7a4cbc410a3c4a707166118\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5a08162cfe6b30fe965d91983a3ec895\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\f423cf6e7bd9d530a8305dd40dfe0e05\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\cc5a0267227bf4c06a77eb1349fe4422\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\d15910bbc6c0bf1dc51196f979f46bf7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\e9605bea82a613bd90083f6408b15fd6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\0818898496922641312f9ab1b303df98\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\52bc10bc375831fc49977ac34ac14ac4\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\cabd6c68bdf97f059d3cb9c0570a2d4b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\2b9e4ff60d3c34d8afd94794a02a5322\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\306cd6571e32f2f4945fc891b290cb22\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\8e8a71804cbacafee50cde7bb52b7740\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\9e4838db0b2dd8eb494ca116359e3868\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+	package
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:1-49:12
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:5:5-65
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:5:22-62
+uses-permission#android.permission.VIBRATE
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:6:5-66
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:6:22-63
+application
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:8:5-47:19
+MERGED from [com.android.support:design:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\17f21880791ebd2d1018caba6f6f12d2\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\17f21880791ebd2d1018caba6f6f12d2\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\95381df8d590d551fca08c7bc48cd59a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\95381df8d590d551fca08c7bc48cd59a\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:22:5-37:19
+MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\b6faa74d4f281fc57dc2278dbff1bcdb\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\b6faa74d4f281fc57dc2278dbff1bcdb\AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\3286f36a3be7c04da79902f48d8225b8\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\3286f36a3be7c04da79902f48d8225b8\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:22:5-26:19
+MERGED from [me.dm7.barcodescanner:core:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\core-1.9.aar\ed309fdae1744690a49f164654e8e67c\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:core:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\core-1.9.aar\ed309fdae1744690a49f164654e8e67c\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\37064165c7a4cbc410a3c4a707166118\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\37064165c7a4cbc410a3c4a707166118\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5a08162cfe6b30fe965d91983a3ec895\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5a08162cfe6b30fe965d91983a3ec895\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\37064165c7a4cbc410a3c4a707166118\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:13:9-35
+	android:label
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:11:9-41
+	android:roundIcon
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:12:9-54
+	android:icon
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:14:9-40
+activity#com.example.newme.QRCode
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:17:9-44
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:17:19-41
+activity#com.example.newme.SettingsPage
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:18:9-19:58
+	android:theme
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:19:13-56
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:18:19-47
+activity#com.example.newme.DeleteAccount
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:20:9-21:58
+	android:theme
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:21:13-56
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:20:19-48
+activity#com.example.newme.LoginActivity
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:22:9-25:59
+	android:label
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:24:13-57
+	android:theme
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:25:13-56
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:23:13-42
+activity#com.example.newme.VoucherActivity
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:26:9-53
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:26:19-50
+activity#com.example.newme.ProfilePage
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:27:9-49
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:27:19-46
+activity#com.example.newme.SignIn
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:28:9-43
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:28:19-41
+activity#com.example.newme.MakeAccount
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:29:9-32:59
+	android:label
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:31:13-64
+	android:theme
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:32:13-56
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:30:13-40
+activity#com.example.newme.MainActivity
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:33:9-39:20
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:33:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:34:13-38:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:35:17-69
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:35:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:37:17-77
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:37:27-74
+meta-data#com.google.android.gms.vision.DEPENDENCIES
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:41:9-43:39
+	android:value
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:43:13-36
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:42:13-70
+meta-data#preloaded_fonts
+ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:44:9-46:57
+	android:resource
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:46:13-54
+	android:name
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml:45:13-43
+uses-sdk
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\8469802d291082adf20871a5adff5d62\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\8469802d291082adf20871a5adff5d62\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\17f21880791ebd2d1018caba6f6f12d2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\17f21880791ebd2d1018caba6f6f12d2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\8b30273707ac5c4f88279a10340d6233\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\8b30273707ac5c4f88279a10340d6233\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\95381df8d590d551fca08c7bc48cd59a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\95381df8d590d551fca08c7bc48cd59a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:20:5-44
+MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\b6faa74d4f281fc57dc2278dbff1bcdb\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:zxing:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\zxing-1.9.aar\b6faa74d4f281fc57dc2278dbff1bcdb\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\31386a26ce384443fd18bdddb8640a1c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\31386a26ce384443fd18bdddb8640a1c\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-16.0.0.aar\4c93119270d83277114f0ea3eb124f8a\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-16.0.0.aar\4c93119270d83277114f0ea3eb124f8a\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-16.0.0.aar\4642a5dc3b670bdc7026d9ffca25bb09\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-16.0.0.aar\4642a5dc3b670bdc7026d9ffca25bb09\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\3286f36a3be7c04da79902f48d8225b8\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\3286f36a3be7c04da79902f48d8225b8\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:20:5-44
+MERGED from [me.dm7.barcodescanner:core:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\core-1.9.aar\ed309fdae1744690a49f164654e8e67c\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:core:1.9] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\core-1.9.aar\ed309fdae1744690a49f164654e8e67c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\5f863b631dbecbe5ecba41047e635ec1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\5f863b631dbecbe5ecba41047e635ec1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\8919c4b511685a6e2d037a68d6b94cea\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\8919c4b511685a6e2d037a68d6b94cea\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\7fa7f19d98a0aa560a2bef3b182d673a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\7fa7f19d98a0aa560a2bef3b182d673a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\e281860b458e5084736053e35a9c1029\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\e281860b458e5084736053e35a9c1029\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\76c76ba204972cb8a66808676f60cd05\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\76c76ba204972cb8a66808676f60cd05\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\dbf6521fda66128f61e1d2d2d0bdbaf3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\dbf6521fda66128f61e1d2d2d0bdbaf3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\ee038d5f178684293e12fdce6dddbf42\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\ee038d5f178684293e12fdce6dddbf42\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\b057312ce239f782e9dc2cc5cde12c64\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\b057312ce239f782e9dc2cc5cde12c64\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\3e404eceeaff81c1de321925b46fe817\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\3e404eceeaff81c1de321925b46fe817\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\72ac99e383b8ae4cf888f0fcab5ee178\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\72ac99e383b8ae4cf888f0fcab5ee178\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\2c1ea6cee6c2b94c27da392537dabd03\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\2c1ea6cee6c2b94c27da392537dabd03\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\bbc653819ed9ee7dfcb11853363bfdf1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\bbc653819ed9ee7dfcb11853363bfdf1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\b6fde9d146a331b1b5313750252bb038\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\b6fde9d146a331b1b5313750252bb038\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\ce2e299e21520d3a25b185fbd12d96de\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\ce2e299e21520d3a25b185fbd12d96de\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\37064165c7a4cbc410a3c4a707166118\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\37064165c7a4cbc410a3c4a707166118\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5a08162cfe6b30fe965d91983a3ec895\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\5a08162cfe6b30fe965d91983a3ec895\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\f423cf6e7bd9d530a8305dd40dfe0e05\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\f423cf6e7bd9d530a8305dd40dfe0e05\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\cc5a0267227bf4c06a77eb1349fe4422\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\cc5a0267227bf4c06a77eb1349fe4422\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\d15910bbc6c0bf1dc51196f979f46bf7\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\d15910bbc6c0bf1dc51196f979f46bf7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\e9605bea82a613bd90083f6408b15fd6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\e9605bea82a613bd90083f6408b15fd6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\0818898496922641312f9ab1b303df98\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\0818898496922641312f9ab1b303df98\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\52bc10bc375831fc49977ac34ac14ac4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\52bc10bc375831fc49977ac34ac14ac4\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\cabd6c68bdf97f059d3cb9c0570a2d4b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\cabd6c68bdf97f059d3cb9c0570a2d4b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\2b9e4ff60d3c34d8afd94794a02a5322\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\2b9e4ff60d3c34d8afd94794a02a5322\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\306cd6571e32f2f4945fc891b290cb22\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\306cd6571e32f2f4945fc891b290cb22\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\8e8a71804cbacafee50cde7bb52b7740\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\8e8a71804cbacafee50cde7bb52b7740\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\9e4838db0b2dd8eb494ca116359e3868\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\9e4838db0b2dd8eb494ca116359e3868\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanjo\Documents\GitHub\NewMePostAlex\app\src\main\AndroidManifest.xml
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\bd837608c7ca87f77a6e31dbd3347a67\AndroidManifest.xml:34:13-89
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\071422cb66b65ab9365550588c91ce2a\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\522a8b29bccc8b345ec2652ef04461ac\AndroidManifest.xml:24:13-58
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\a23ce26939cde447b9ec0da71abc7389\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-v4:26.1.0] C:\Users\vanjo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\0d37cff4a9206edb1b635ec276ab96b3\AndroidManifest.xml:27:13-51
