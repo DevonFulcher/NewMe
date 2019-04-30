@@ -98,8 +98,7 @@ public class MakeAccount extends AppCompatActivity {
                 int duration = Toast.LENGTH_LONG;
                 Toast acctToast = Toast.makeText(context, acct_exists, duration);
 
-                //TODO: query bigchainDB to check if user's public key already exists
-                //TODO: make user account https://github.com/bigchaindb/java-bigchaindb-driver/blob/master/src/main/java/com/bigchaindb/model/Account.java
+
                 //Make user accounts
                 userDataEditor.putString("FirstName", user.getFirstName());
                 userDataEditor.putString("LastName", user.getLastName());
@@ -120,7 +119,7 @@ public class MakeAccount extends AppCompatActivity {
 
                 /**
                  * it seems you need to create an account, create a variable to the new account then call load account.
-                 * Missing a method to send the account to the DB.
+                 * Use the sharedPreferences to save the public and private keys
                  */
 
                 AccountApi userAccountApi = new AccountApi();//com.bigchaindb.model.account
@@ -130,7 +129,7 @@ public class MakeAccount extends AppCompatActivity {
                 userDataEditor.putString("PublicKey", accessUserAccount.getPublicKey().toString());
                 userDataEditor.putString("PrivateKey", accessUserAccount.getPrivateKey().toString());
                 userDataEditor.apply();
-                //commmit to file^^^^^
+                //commmit to file createdBySharedPreference^^^^^
 
 
                 Asset userAsset = new Asset(user, User.class);
@@ -141,22 +140,45 @@ public class MakeAccount extends AppCompatActivity {
                 }
 
 
+                /**
+                Everything in bigchain is an asset, so you can treat creating a user like creating an asset
+                 */
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Transaction sentTx = null;
+                        try {
+                            //create a transaction
+                            bigchainDBApi.setConfig();
+                            KeyPair keys = bigchainDBApi.getKeys();
 
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                Log.d(TAG, "MEMES - " + SUCCESS_CODE);
-                                while(SUCCESS_CODE == 1){
-                                    try {
-                                        Thread.sleep(500);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                    Log.d(TAG, "Still waiting with code - " + SUCCESS_CODE);
-                                }
+                            Map<String, String> assetData = new TreeMap<String, String>() {{
+                                put("firstname", UFirst);
+                                put("lastname", ULast);
+                                put("purpose", "saving the world");
+                            }};
 
-                            }
-                        }, 3000);
+                            MetaData metaData = new MetaData();
+                            metaData.setMetaData("Creating Account", "New Account");
+                            String transID = bigchainDBApi.doCreate(assetData, metaData, keys);
+
+                            //transfer data
+
+                            MetaData transferMetadata = new MetaData();
+                            transferMetadata.setMetaData("Creating User", UFirst+ULast);
+
+                            Thread.sleep(5000);
+
+                            bigchainDBApi.doTransfer(transID, transferMetadata, keys);
+
+                            Intent intent = new Intent(MakeAccount.this,ProfilePage.class);
+                            MakeAccount.this.startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                thread.start();
 
 
                 Intent intent = new Intent(MakeAccount.this, ProfilePage.class);

@@ -88,9 +88,8 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                     KeyPair keys = bigchainDBApi.getKeys();
 
                     Map<String, String> assetData = new TreeMap<String, String>() {{
-                        put("firstname", qResult.getText());
-                        put("lastname", "Opal");
-                        put("purpose", "saving the world");
+                        put("Transaction", qResult.getText());
+
                     }};
 
                     MetaData metaData = new MetaData();
@@ -120,6 +119,8 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
 
 
     }
+
+
 
     @Override
     protected void onPause(){
@@ -168,7 +169,7 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
         this.finish();
     }
 
-
+//Code from:  https://gist.github.com/innoprenuer/d4c6798fe5c0581c05a7e676e175e515
 
     private GenericCallback handleServerResponse() {
         //define callback methods to verify response from BigchainDBServer
