@@ -1,5 +1,6 @@
 package com.example.newme;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.bigchaindb.builders.BigchainDbConfigBuilder;
@@ -7,6 +8,8 @@ import com.bigchaindb.builders.BigchainDbTransactionBuilder;
 import com.bigchaindb.constants.Operations;
 import com.bigchaindb.model.GenericCallback;
 import com.bigchaindb.model.Transaction;
+import com.google.zxing.oned.rss.RSS14Reader;
+
 
 import net.i2p.crypto.eddsa.EdDSAPrivateKey;
 import net.i2p.crypto.eddsa.EdDSAPublicKey;
@@ -22,14 +25,17 @@ import java.util.TreeMap;
  * to create TXs on BigchainDB network
  * @author innoprenuer
  *
+ * AsyncTask - https://developer.android.com/reference/android/os/AsyncTask.html
+ * https://medium.com/@ankit.sinhal/understanding-of-asynctask-in-android-8fe61a96a238
+ *
  */
-public class Bigchain {
+public class Bigchain{
 
     private static KeyPairGenerator edDsaKpg = new KeyPairGenerator();
     private static final String TAG = "BigchainDB";
     private static String userId = "";
     private static final KeyPair KEYS = edDsaKpg.generateKeyPair();
-    private static final String bigchainDBNodeURL = "http://testnet.bigchaindb.com";//"http://10.0.2.2:9984" ;
+    private static final String bigchainDBNodeURL = "https://35.212.69.121/";///"https://test.bigchaindb.com/";//"http://10.0.2.2:9984" ;
     private GenericCallback callback = null;
 
     public Bigchain(GenericCallback callback){
@@ -42,9 +48,10 @@ public class Bigchain {
      */
     public static void setConfig() {
         BigchainDbConfigBuilder
-                .baseUrl(bigchainDBNodeURL) //or use http://testnet.bigchaindb.com
-                .addToken("app_id", "")
-                .addToken("app_key", "").setup();
+                .baseUrl(bigchainDBNodeURL)
+                .addToken("app_id","")
+                .addToken("app_key","").setup();
+
 
     }
 
@@ -72,13 +79,12 @@ public class Bigchain {
                 .buildAndSign((EdDSAPublicKey) KEYS.getPublic(), (EdDSAPrivateKey) KEYS.getPrivate())
                 .sendTransaction(this.callback);
 
-        Log.d(TAG, "(*) Transaction successfully sent.. - " + transaction.getId());
+        Log.d(TAG, "(*) Transaction registered.. - " + transaction.getId());
 
 
         return transaction;
 
     }
-
 
 
 
