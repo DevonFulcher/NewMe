@@ -99,7 +99,7 @@ public class MakeAccount extends AppCompatActivity {
                 Toast acctToast = Toast.makeText(context, acct_exists, duration);
 
 
-                //Make user accounts
+                //userDataEduitor saves user data in a file that can be accessed by android
                 userDataEditor.putString("FirstName", user.getFirstName());
                 userDataEditor.putString("LastName", user.getLastName());
                 userDataEditor.putString("Email", user.getEmail());
