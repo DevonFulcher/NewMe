@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\vanjo\\Documents\\GitHub\\NewMePostAlex\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xhdpi-v4\\values-xhdpi-v4.xml",
+            "outputFile": "C:\\Users\\vanjo\\Documents\\GitHub\\NewMe\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xhdpi-v4\\values-xhdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\vanjo\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.9.aar\\ed309fdae1744690a49f164654e8e67c\\res\\values-xhdpi-v4\\values-xhdpi-v4.xml",
+                    "source": "C:\\Users\\vanjo\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.9.aar\\5e75ab01cf43700daf55439d682be1f5\\res\\values-xhdpi-v4\\values-xhdpi-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
