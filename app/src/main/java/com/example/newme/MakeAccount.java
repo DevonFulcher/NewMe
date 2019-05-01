@@ -164,16 +164,16 @@ public class MakeAccount extends AppCompatActivity {
 
                             MetaData metaData = new MetaData();
                             metaData.setMetaData("Creating Account", "New Account");
-                            String transID = bigchainDBApi.doCreate(assetData, metaData, keys);
+                            bigchainDBApi.doCreate(assetData, metaData, keys);
 
                             //transfer data
 
-                            MetaData transferMetadata = new MetaData();
-                            transferMetadata.setMetaData("Creating User", UFirst+ULast);
-
-                            Thread.sleep(5000);
-
-                            bigchainDBApi.doTransfer(transID, transferMetadata, keys);
+//                            MetaData transferMetadata = new MetaData();
+//                            transferMetadata.setMetaData("Creating User", UFirst+ULast);
+//
+//                            Thread.sleep(5000);
+//
+//                            bigchainDBApi.doTransfer(transID, transferMetadata, keys);
 
                             Intent intent = new Intent(MakeAccount.this,ProfilePage.class);
                             MakeAccount.this.startActivity(intent);
