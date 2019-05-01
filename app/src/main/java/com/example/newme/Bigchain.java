@@ -51,7 +51,7 @@ public class Bigchain {
     public static void setConfig() {
         BigchainDbConfigBuilder
                 //the baseUrl node was created by Dan Ascritinii dan@kryha.io
-                .baseUrl("http://34.66.28.233/") //or use http://testnet.bigchaindb.com
+                .baseUrl("http://104.154.25.17/") //or use http://testnet.bigchaindb.com
                 .addToken("app_id", "")
                 .addToken("app_key", "").setup();
 
