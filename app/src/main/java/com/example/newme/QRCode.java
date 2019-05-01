@@ -124,20 +124,20 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
     }
 
 
-
+    //when the user presses the home button, stop camera
     @Override
     protected void onPause(){
         super.onPause();
         scannerView.stopCamera();
     }
-
+    //when the user returns to the app, start camera
     @Override
     protected void onResume(){
         super.onResume();
         scannerView.setResultHandler(this);
         scannerView.startCamera();
     }
-
+    //Checks if app has permission to use camera, if not it requests permission
     protected void checkAndRequestPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
             if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)){
