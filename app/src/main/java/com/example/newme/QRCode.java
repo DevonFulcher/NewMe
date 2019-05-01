@@ -81,7 +81,6 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
             //new Runnable() {
             @Override
             public void run() {
-                Transaction sentTx = null;
                 try {
                     //create a transaction
                     bigchainDBApi.setConfig();
@@ -91,6 +90,10 @@ public class QRCode extends AppCompatActivity implements ZXingScannerView.Result
                         put("Transaction", qResult.getText());
 
                     }};
+
+                    //https://www.testingexcellence.com/how-to-parse-json-in-java/
+                    // use to crate a method that adds transaction to users wallet.
+                    //TODO: call method here that parses transaction and adds to Profile Page
 
                     MetaData metaData = new MetaData();
                     metaData.setMetaData("where is he now?", "Thailand");
